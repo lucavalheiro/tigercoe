@@ -12,56 +12,47 @@
       background: #fff;
     }
     .header {
-      background: #003366;
+      background: #328266;
       color: #fff;
       text-align: center;
       font-size: 2rem;
       padding: 20px 10px 10px 10px;
       letter-spacing: 1px;
     }
-    #heygen-streaming-embed {
-      position: relative !important;
+    .avatar-wrapper {
+      width: 100vw;
+      height: calc(100vh - 60px);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+    }
+    #heygen-streaming-embed,
+    #heygen-streaming-container,
+    #heygen-streaming-container iframe {
       width: 100vw !important;
       max-width: 100vw !important;
-      height: calc(100vh - 60px) !important;
-      max-height: calc(100vh - 60px) !important;
-      left: 0 !important;
-      top: 0 !important;
-      border-radius: 0 !important;
-      border: none !important;
-      box-shadow: none !important;
-      background: #fff !important;
-      z-index: 10 !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      overflow: hidden !important;
-    }
-    #heygen-streaming-container {
-      width: 100% !important;
       height: 100% !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-    }
-    #heygen-streaming-container iframe {
-      width: 100% !important;
-      height: 100% !important;
-      border: 0 !important;
-      background: #fff !important;
+      max-height: 100% !important;
       object-fit: contain !important;
+      border: none !important;
+      background: #fff !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      box-sizing: border-box !important;
     }
     @media (max-width: 600px) {
       .header { font-size: 1.2rem; padding: 10px 5px; }
-      #heygen-streaming-embed, #heygen-streaming-container, #heygen-streaming-container iframe {
-        height: calc(100vh - 40px) !important;
-        max-height: calc(100vh - 40px) !important;
+      .avatar-wrapper {
+        height: calc(100vh - 40px);
       }
     }
   </style>
 </head>
 <body>
   <div class="header">Center Of Excellence TD SYNNEX</div>
+  <div class="avatar-wrapper" id="avatar-wrapper"></div>
   <script>
   !function(window){
     const host="https://labs.heygen.com",
@@ -72,43 +63,19 @@
     container.id="heygen-streaming-container";
     const stylesheet=document.createElement("style");
     stylesheet.innerHTML=`
-      #heygen-streaming-embed {
-        position: relative !important;
+      #heygen-streaming-embed,
+      #heygen-streaming-container,
+      #heygen-streaming-container iframe {
         width: 100vw !important;
         max-width: 100vw !important;
-        height: calc(100vh - 60px) !important;
-        max-height: calc(100vh - 60px) !important;
-        left: 0 !important;
-        top: 0 !important;
-        border-radius: 0 !important;
-        border: none !important;
-        box-shadow: none !important;
-        background: #fff !important;
-        z-index: 10 !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        overflow: hidden !important;
-      }
-      #heygen-streaming-container {
-        width: 100% !important;
         height: 100% !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-      }
-      #heygen-streaming-container iframe {
-        width: 100% !important;
-        height: 100% !important;
-        border: 0 !important;
-        background: #fff !important;
+        max-height: 100% !important;
         object-fit: contain !important;
-      }
-      @media (max-width: 600px) {
-        #heygen-streaming-embed, #heygen-streaming-container, #heygen-streaming-container iframe {
-          height: calc(100vh - 40px) !important;
-          max-height: calc(100vh - 40px) !important;
-        }
+        border: none !important;
+        background: #fff !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
       }
     `;
     const iframe=document.createElement("iframe");
@@ -116,7 +83,7 @@
     container.appendChild(iframe);
     wrapDiv.appendChild(stylesheet);
     wrapDiv.appendChild(container);
-    document.body.appendChild(wrapDiv);
+    document.getElementById('avatar-wrapper').appendChild(wrapDiv);
   }(globalThis);
   </script>
 </body>
