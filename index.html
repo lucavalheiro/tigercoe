@@ -1,378 +1,62 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Precisa de ajuda para soluções IBM? Chame o TigerCoe no chat</title>
+  <title>Pergunte ao TigerCOE</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    :root {
-      --verde-petroleo: #11403b;
-      --verde-petroleo2: #1a5c53;
-      --amarelo: #ffd600;
-      --branco: #fff;
-      --preto: #111;
-      --cinza: #f7f7f7;
-      --fonte: 'Segoe UI', Arial, sans-serif;
-    }
-    body {
+    html, body {
       margin: 0;
-      font-family: var(--fonte);
-      background: var(--cinza);
-      color: var(--preto);
-    }
-    header {
-      background: linear-gradient(90deg, #11403b 0%, #1a5c53 100%);
-      color: var(--amarelo);
-      padding: 2.5rem 1rem 1.2rem 1rem;
-      text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      position: relative;
-    }
-    .lang-switch {
-      position: absolute;
-      top: 1.5rem;
-      right: 2rem;
-      display: flex;
-      gap: 0.5rem;
-    }
-    .lang-btn {
-      background: var(--amarelo);
-      color: var(--verde-petroleo);
-      border: none;
-      font-weight: bold;
-      border-radius: 6px;
-      padding: 0.3em 1em;
-      cursor: pointer;
-      font-size: 1em;
-      transition: background 0.2s, color 0.2s;
-    }
-    .lang-btn.active, .lang-btn:hover {
-      background: var(--preto);
-      color: var(--amarelo);
-    }
-    .main-content {
-      max-width: 920px;
-      margin: 2.5rem auto 2rem auto;
-      padding: 0 1rem;
-    }
-    .solucao {
-      background: var(--branco);
-      margin-bottom: 2rem;
-      padding: 2rem 2rem 1.5rem 2rem;
-      border-radius: 14px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      border-left: 8px solid var(--verde-petroleo);
-      transition: box-shadow 0.2s;
-    }
-    .solucao:hover {
-      box-shadow: 0 4px 16px rgba(17,64,59,0.10);
-    }
-    .tag {
-      display: inline-block;
-      background: linear-gradient(90deg, #11403b 60%, #1a5c53 100%);
-      color: var(--amarelo);
-      padding: 0.2em 0.7em;
-      border-radius: 12px;
-      font-size: 0.95em;
-      margin-bottom: 1em;
-      margin-right: 0.5em;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-    }
-    h2 {
-      color: var(--verde-petroleo);
-      margin-top: 0.2em;
-      margin-bottom: 0.6em;
-    }
-    .solucao ul {
-      margin: 0.3em 0 0.8em 1.2em;
       padding: 0;
+      background: #fff;
+      font-family: Arial, sans-serif;
     }
-    .solucao strong {
-      color: var(--verde-petroleo2);
+
+    .header {
+      background: #328266;
+      color: #fff;
+      text-align: center;
+      font-size: 2rem;
+      padding: 20px 10px;
+      letter-spacing: 1px;
     }
-    @media (max-width: 700px) {
-      .main-content { padding: 0 0.2rem; }
-      .solucao { padding: 1.2rem 0.7rem 1rem 0.7rem; }
-      .lang-switch { right: 1rem; }
+
+    .avatar-fixed {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .avatar-fixed iframe {
+      width: 100%;
+      height: 600px;
+      max-width: 100%;
+      border: none;
+      border-radius: 12px;
+      background: #000;
+    }
+
+    @media (max-width: 768px) {
+      .avatar-fixed iframe {
+        height: 400px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .avatar-fixed iframe {
+        height: 320px;
+      }
     }
   </style>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const ptBtn = document.getElementById('pt-btn');
-      const enBtn = document.getElementById('en-btn');
-      const esBtn = document.getElementById('es-btn');
-      const ptContent = document.getElementById('pt-content');
-      const enContent = document.getElementById('en-content');
-      const esContent = document.getElementById('es-content');
-      ptBtn.addEventListener('click', function() {
-        ptContent.style.display = '';
-        enContent.style.display = 'none';
-        esContent.style.display = 'none';
-        ptBtn.classList.add('active');
-        enBtn.classList.remove('active');
-        esBtn.classList.remove('active');
-      });
-      enBtn.addEventListener('click', function() {
-        ptContent.style.display = 'none';
-        enContent.style.display = '';
-        esContent.style.display = 'none';
-        enBtn.classList.add('active');
-        ptBtn.classList.remove('active');
-        esBtn.classList.remove('active');
-      });
-      esBtn.addEventListener('click', function() {
-        ptContent.style.display = 'none';
-        enContent.style.display = 'none';
-        esContent.style.display = '';
-        esBtn.classList.add('active');
-        ptBtn.classList.remove('active');
-        enBtn.classList.remove('active');
-      });
-      // Default: PT
-      ptBtn.classList.add('active');
-      enContent.style.display = 'none';
-      esContent.style.display = 'none';
-    });
-  </script>
 </head>
 <body>
-  <header>
-    <div class="lang-switch">
-      <button class="lang-btn" id="pt-btn">Português</button>
-      <button class="lang-btn" id="en-btn">English</button>
-      <button class="lang-btn" id="es-btn">Español</button>
-    </div>
-    <h1>Catálogo de Soluções IBM - TD SYNNEX</h1>
-    <p style="color:var(--amarelo);font-size:1.15em;margin-top:0.7em;">
-      Automação, Dados, IA, Segurança, Sustentabilidade e mais
-    </p>
-  </header>
-  <div class="main-content">
-    <!-- PORTUGUÊS -->
-    <div id="pt-content">
-      <div class="solucao">
-        <span class="tag">Automação de Negócios</span>
-        <h2>Automação de Negócios</h2>
-        <ul>
-          <li><strong>Fluxo de Trabalho:</strong> Automatiza processos digitais, integra BPM e gestão de casos, aumenta produtividade e visibilidade.</li>
-          <li><strong>Watson Orchestrate:</strong> Plataforma SaaS de automação com assistente digital, integração fácil e personalizável, acelera processos de RH e negócios.</li>
-          <li><strong>Automação Robótica de Processos (RPA):</strong> Robôs de software automatizam tarefas repetitivas, reduzem erros e aumentam produtividade.</li>
-          <li><strong>Mineração de Processos:</strong> Analisa registros de atividades para identificar gargalos, otimizar processos e garantir conformidade.</li>
-        </ul>
-      </div>
-      <div class="solucao">
-        <span class="tag">Integração e APIs</span>
-        <h2>Integração e APIs</h2>
-        <ul>
-          <li><strong>API Connect:</strong> Gerenciamento completo de APIs, criação, proteção, análise e monetização, com alta segurança e flexibilidade.</li>
-          <li><strong>Aspera:</strong> Transferência ultrarrápida e segura de grandes volumes de dados, integração fácil, otimizada para alta latência.</li>
-          <li><strong>Data Power:</strong> Gateway de integração e segurança, conecta sistemas e aplicativos, reduz custos e complexidade.</li>
-        </ul>
-      </div>
-      <div class="solucao">
-        <span class="tag">Automação de TI</span>
-        <h2>Automação de TI</h2>
-        <ul>
-          <li><strong>Instana:</strong> Observabilidade automatizada, monitora desempenho de aplicativos, detecta problemas em tempo real.</li>
-          <li><strong>Turbonomic:</strong> Gerenciamento automático de recursos, otimiza desempenho e custos em ambientes híbridos/multinuvem.</li>
-          <li><strong>SevOne:</strong> Monitoramento de desempenho de redes, detecta e previne problemas, integra dados de múltiplos fornecedores.</li>
-          <li><strong>Apptio:</strong> Gestão de custos e FinOps para nuvem, análise e recomendações para otimizar gastos de TI.</li>
-        </ul>
-      </div>
-      <div class="solucao">
-        <span class="tag">Segurança</span>
-        <h2>Segurança</h2>
-        <ul>
-          <li><strong>Guardium Data Protection:</strong> Descobre, audita, monitora e protege dados confidenciais em bancos, arquivos e nuvem, facilita conformidade.</li>
-          <li><strong>Guardium Data Encryption:</strong> Criptografia de dados, tokenização, mascaramento e gerenciamento de chaves, protege dados em ambientes híbridos.</li>
-          <li><strong>QRadar SIEM:</strong> Correlaciona eventos de segurança, detecta ameaças, automatiza investigações, visibilidade total.</li>
-          <li><strong>Verify SaaS:</strong> Gestão de identidade e acesso (IAM), autenticação baseada em risco, logon único, governança e consentimento.</li>
-          <li><strong>Verify Identity Protection:</strong> Gestão da postura de segurança de identidade (ISPM), detecta pontos cegos, corrige ameaças e vulnerabilidades.</li>
-          <li><strong>Verify Privileged (PAM):</strong> Gerenciamento de contas privilegiadas, cofre de senhas, controle de privilégios, auditoria e proteção de acessos críticos.</li>
-          <li><strong>Maas360:</strong> Gerenciamento unificado de endpoints (UEM), protege dispositivos, aplicativos e dados, análise de IA.</li>
-          <li><strong>Data Security Posture Management (DSPM):</strong> Identifica dados sensíveis em nuvem, avalia vulnerabilidades, automatiza remediação e garante conformidade.</li>
-        </ul>
-      </div>
-      <div class="solucao">
-        <span class="tag">Dados e Inteligência Artificial</span>
-        <h2>Dados e Inteligência Artificial</h2>
-        <ul>
-          <li><strong>Watsonx:</strong> Plataforma de IA e dados, personalização e treinamento de modelos, governança, automação e gestão de dados.</li>
-          <li><strong>DataBand:</strong> Observabilidade de dados, coleta automática de metadados, detecção de anomalias, gestão de incidentes.</li>
-          <li><strong>Match 360:</strong> Unifica dados mestres de múltiplas fontes, visão 360º de clientes, elimina duplicidades, acelera resultados.</li>
-          <li><strong>Planning Analytics:</strong> Planejamento, orçamento e previsão com IA, integração com ERPs, consultas em linguagem natural.</li>
-          <li><strong>Watson Query:</strong> Consulta distribuída universal, integra múltiplas fontes de dados sem replicação, virtualização, cache inteligente.</li>
-          <li><strong>Watson Knowledge Catalog:</strong> Catálogo de dados corporativos, descoberta inteligente, autoatendimento, governança e proteção de dados.</li>
-        </ul>
-      </div>
-      <div class="solucao">
-        <span class="tag">Sustentabilidade e Operações</span>
-        <h2>Sustentabilidade e Operações</h2>
-        <ul>
-          <li><strong>Maximo Application Suite:</strong> Gestão de ativos, manutenção preditiva, monitoramento, planejamento, acesso móvel, reduz custos e aumenta vida útil dos ativos.</li>
-          <li><strong>Inspeção Visual:</strong> Plataforma de IA para análise de imagens e vídeos, detecção de defeitos em tempo real, fácil de usar.</li>
-          <li><strong>Envizi:</strong> Plataforma de dados ESG/sustentabilidade, coleta, análise e relatórios de indicadores ambientais, sociais e de governança.</li>
-          <li><strong>Sterling Supply Chain Business Network:</strong> Rede empresarial para colaboração na cadeia de suprimentos, insights em tempo real, automação, visibilidade ponta a ponta.</li>
-        </ul>
-      </div>
-    </div>
-    <!-- ENGLISH -->
-    <div id="en-content">
-      <div class="solucao">
-        <span class="tag">Business Automation</span>
-        <h2>Business Automation</h2>
-        <ul>
-          <li><strong>Workflow:</strong> Automates digital processes, integrates BPM and case management, increases productivity and visibility.</li>
-          <li><strong>Watson Orchestrate:</strong> SaaS automation platform with digital assistant, easy and customizable integration, accelerates HR and business processes.</li>
-          <li><strong>Robotic Process Automation (RPA):</strong> Software robots automate repetitive tasks, reduce errors, and increase productivity.</li>
-          <li><strong>Process Mining:</strong> Analyzes activity logs to identify bottlenecks, optimize processes, and ensure compliance.</li>
-        </ul>
-      </div>
-      <div class="solucao">
-        <span class="tag">Integration & APIs</span>
-        <h2>Integration & APIs</h2>
-        <ul>
-          <li><strong>API Connect:</strong> Complete API management, creation, protection, analytics, and monetization, with high security and flexibility.</li>
-          <li><strong>Aspera:</strong> Ultra-fast and secure transfer of large data volumes, easy integration, optimized for high latency.</li>
-          <li><strong>Data Power:</strong> Integration and security gateway, connects systems and applications, reduces costs and complexity.</li>
-        </ul>
-      </div>
-      <div class="solucao">
-        <span class="tag">IT Automation</span>
-        <h2>IT Automation</h2>
-        <ul>
-          <li><strong>Instana:</strong> Automated observability, monitors application performance, detects issues in real time.</li>
-          <li><strong>Turbonomic:</strong> Automatic resource management, optimizes performance and costs in hybrid/multicloud environments.</li>
-          <li><strong>SevOne:</strong> Network performance monitoring, detects and prevents issues, integrates data from multiple vendors.</li>
-          <li><strong>Apptio:</strong> Cloud cost and FinOps management, analytics and recommendations to optimize IT spending.</li>
-        </ul>
-      </div>
-      <div class="solucao">
-        <span class="tag">Security</span>
-        <h2>Security</h2>
-        <ul>
-          <li><strong>Guardium Data Protection:</strong> Discovers, audits, monitors, and protects sensitive data in databases, files, and cloud, eases compliance.</li>
-          <li><strong>Guardium Data Encryption:</strong> Data encryption, tokenization, masking, and key management, protects data in hybrid environments.</li>
-          <li><strong>QRadar SIEM:</strong> Correlates security events, detects threats, automates investigations, full visibility.</li>
-          <li><strong>Verify SaaS:</strong> Identity and access management (IAM), risk-based authentication, single sign-on, governance, and consent.</li>
-          <li><strong>Verify Identity Protection:</strong> Identity security posture management (ISPM), detects blind spots, corrects threats and vulnerabilities.</li>
-          <li><strong>Verify Privileged (PAM):</strong> Privileged account management, password vault, privilege control, audit, and critical access protection.</li>
-          <li><strong>Maas360:</strong> Unified endpoint management (UEM), protects devices, apps, and data, AI analytics.</li>
-          <li><strong>Data Security Posture Management (DSPM):</strong> Identifies sensitive data in cloud, assesses vulnerabilities, automates remediation, ensures compliance.</li>
-        </ul>
-      </div>
-      <div class="solucao">
-        <span class="tag">Data & Artificial Intelligence</span>
-        <h2>Data & Artificial Intelligence</h2>
-        <ul>
-          <li><strong>Watsonx:</strong> AI and data platform, model customization and training, governance, automation, and data management.</li>
-          <li><strong>DataBand:</strong> Data observability, automatic metadata collection, anomaly detection, incident management.</li>
-          <li><strong>Match 360:</strong> Unifies master data from multiple sources, 360° customer view, eliminates duplicates, accelerates results.</li>
-          <li><strong>Planning Analytics:</strong> Planning, budgeting, and forecasting with AI, ERP integration, natural language queries.</li>
-          <li><strong>Watson Query:</strong> Universal distributed query, integrates multiple data sources without replication, virtualization, smart cache.</li>
-          <li><strong>Watson Knowledge Catalog:</strong> Corporate data catalog, smart discovery, self-service, governance, and data protection.</li>
-        </ul>
-      </div>
-      <div class="solucao">
-        <span class="tag">Sustainability & Operations</span>
-        <h2>Sustainability & Operations</h2>
-        <ul>
-          <li><strong>Maximo Application Suite:</strong> Asset management, predictive maintenance, monitoring, planning, mobile access, reduces costs and extends asset life.</li>
-          <li><strong>Visual Inspection:</strong> AI platform for image and video analysis, real-time defect detection, easy to use.</li>
-          <li><strong>Envizi:</strong> ESG/sustainability data platform, collects, analyzes, and reports environmental, social, and governance indicators.</li>
-          <li><strong>Sterling Supply Chain Business Network:</strong> Business network for supply chain collaboration, real-time insights, automation, end-to-end visibility.</li>
-        </ul>
-      </div>
-    </div>
-    <!-- ESPAÑOL -->
-    <div id="es-content">
-      <div class="solucao">
-        <span class="tag">Automatización de Negocios</span>
-        <h2>Automatización de Negocios</h2>
-        <ul>
-          <li><strong>Flujo de Trabajo:</strong> Automatiza procesos digitales, integra BPM y gestión de casos, aumenta la productividad y la visibilidad.</li>
-          <li><strong>Watson Orchestrate:</strong> Plataforma SaaS de automatización con asistente digital, integración fácil y personalizable, acelera procesos de RRHH y negocios.</li>
-          <li><strong>Automatización Robótica de Procesos (RPA):</strong> Robots de software automatizan tareas repetitivas, reducen errores y aumentan la productividad.</li>
-          <li><strong>Minería de Procesos:</strong> Analiza registros de actividades para identificar cuellos de botella, optimizar procesos y garantizar el cumplimiento.</li>
-        </ul>
-      </div>
-      <div class="solucao">
-        <span class="tag">Integración y APIs</span>
-        <h2>Integración y APIs</h2>
-        <ul>
-          <li><strong>API Connect:</strong> Gestión completa de APIs, creación, protección, análisis y monetización, con alta seguridad y flexibilidad.</li>
-          <li><strong>Aspera:</strong> Transferencia ultrarrápida y segura de grandes volúmenes de datos, integración fácil, optimizada para alta latencia.</li>
-          <li><strong>Data Power:</strong> Gateway de integración y seguridad, conecta sistemas y aplicaciones, reduce costos y complejidad.</li>
-        </ul>
-      </div>
-      <div class="solucao">
-        <span class="tag">Automatización de TI</span>
-        <h2>Automatización de TI</h2>
-        <ul>
-          <li><strong>Instana:</strong> Observabilidad automatizada, monitorea el rendimiento de aplicaciones, detecta problemas en tiempo real.</li>
-          <li><strong>Turbonomic:</strong> Gestión automática de recursos, optimiza el rendimiento y los costos en entornos híbridos/multinube.</li>
-          <li><strong>SevOne:</strong> Monitoreo del rendimiento de redes, detecta y previene problemas, integra datos de múltiples proveedores.</li>
-          <li><strong>Apptio:</strong> Gestión de costos y FinOps para la nube, análisis y recomendaciones para optimizar el gasto de TI.</li>
-        </ul>
-      </div>
-      <div class="solucao">
-        <span class="tag">Seguridad</span>
-        <h2>Seguridad</h2>
-        <ul>
-          <li><strong>Guardium Data Protection:</strong> Descubre, audita, monitorea y protege datos confidenciales en bases de datos, archivos y nube, facilita el cumplimiento.</li>
-          <li><strong>Guardium Data Encryption:</strong> Cifrado de datos, tokenización, enmascaramiento y gestión de claves, protege datos en entornos híbridos.</li>
-          <li><strong>QRadar SIEM:</strong> Correlaciona eventos de seguridad, detecta amenazas, automatiza investigaciones, visibilidad total.</li>
-          <li><strong>Verify SaaS:</strong> Gestión de identidad y acceso (IAM), autenticación basada en riesgos, inicio de sesión único, gobernanza y consentimiento.</li>
-          <li><strong>Verify Identity Protection:</strong> Gestión de la postura de seguridad de identidad (ISPM), detecta puntos ciegos, corrige amenazas y vulnerabilidades.</li>
-          <li><strong>Verify Privileged (PAM):</strong> Gestión de cuentas privilegiadas, bóveda de contraseñas, control de privilegios, auditoría y protección de accesos críticos.</li>
-          <li><strong>Maas360:</strong> Gestión unificada de endpoints (UEM), protege dispositivos, aplicaciones y datos, análisis de IA.</li>
-          <li><strong>Data Security Posture Management (DSPM):</strong> Identifica datos sensibles en la nube, evalúa vulnerabilidades, automatiza la remediación y garantiza el cumplimiento.</li>
-        </ul>
-      </div>
-      <div class="solucao">
-        <span class="tag">Datos e Inteligencia Artificial</span>
-        <h2>Datos e Inteligencia Artificial</h2>
-        <ul>
-          <li><strong>Watsonx:</strong> Plataforma de IA y datos, personalización y entrenamiento de modelos, gobernanza, automatización y gestión de datos.</li>
-          <li><strong>DataBand:</strong> Observabilidad de datos, recopilación automática de metadatos, detección de anomalías, gestión de incidentes.</li>
-          <li><strong>Match 360:</strong> Unifica datos maestros de múltiples fuentes, visión 360° de clientes, elimina duplicados, acelera resultados.</li>
-          <li><strong>Planning Analytics:</strong> Planificación, presupuestación y previsión con IA, integración con ERPs, consultas en lenguaje natural.</li>
-          <li><strong>Watson Query:</strong> Consulta distribuida universal, integra múltiples fuentes de datos sin replicación, virtualización, caché inteligente.</li>
-          <li><strong>Watson Knowledge Catalog:</strong> Catálogo de datos corporativos, descubrimiento inteligente, autoservicio, gobernanza y protección de datos.</li>
-        </ul>
-      </div>
-      <div class="solucao">
-        <span class="tag">Sustentabilidad y Operaciones</span>
-        <h2>Sustentabilidad y Operaciones</h2>
-        <ul>
-          <li><strong>Maximo Application Suite:</strong> Gestión de activos, mantenimiento predictivo, monitoreo, planificación, acceso móvil, reduce costos y aumenta la vida útil de los activos.</li>
-          <li><strong>Inspección Visual:</strong> Plataforma de IA para análisis de imágenes y videos, detección de defectos en tiempo real, fácil de usar.</li>
-          <li><strong>Envizi:</strong> Plataforma de datos ESG/sustentabilidad, recopilación, análisis e informes de indicadores ambientales, sociales y de gobernanza.</li>
-          <li><strong>Sterling Supply Chain Business Network:</strong> Red empresarial para colaboración en la cadena de suministro, insights en tiempo real, automatización, visibilidad de extremo a extremo.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <script>
-    !function(window){
-      const host="https://labs.heygen.com",
-      url=host+"/guest/streaming-embed?share=eyJxdWFsaXR5IjoiaGlnaCIsImF2YXRhck5hbWUiOiJQZWRyb19Qcm9mZXNzaW9uYWxMb29rMl9w%0D%0AdWJsaWMiLCJwcmV2aWV3SW1nIjoiaHR0cHM6Ly9maWxlczIuaGV5Z2VuLmFpL2F2YXRhci92My9m%0D%0AOWM5NGFlN2JkMTU0NWU4YjY1MzFhOTFiYTk3NmFkOV81NTkxMC9wcmV2aWV3X3RhbGtfMS53ZWJw%0D%0AIiwibmVlZFJlbW92ZUJhY2tncm91bmQiOnRydWUsImtub3dsZWRnZUJhc2VJZCI6ImRlZjE5M2U3%0D%0AM2M2ZjRmM2M5ZDI3ZjJjZTk2NGU1YWQ3IiwidXNlcm5hbWUiOiI4ODlhZWQ4YjdiMTM0NzgzYjlh%0D%0ANzllOWZmYTA2NzUzOCJ9&inIFrame=1",
-      clientWidth=document.body.clientWidth,
-      wrapDiv=document.createElement("div");
-      wrapDiv.id="heygen-streaming-embed";
-      const container=document.createElement("div");
-      container.id="heygen-streaming-container";
-      const stylesheet=document.createElement("style");
-      stylesheet.innerHTML=`\n  #heygen-streaming-embed {\n    z-index: 9999;\n    position: fixed;\n    left: 40px;\n    bottom: 40px;\n    width: 200px;\n    height: 200px;\n    border-radius: 50%;\n    border: 2px solid #fff;\n    box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.12);\n    transition: all linear 0.1s;\n    overflow: hidden;\n\n    opacity: 0;\n    visibility: hidden;\n  }\n  #heygen-streaming-embed.show {\n    opacity: 1;\n    visibility: visible;\n  }\n  #heygen-streaming-embed.expand {\n    ${clientWidth<540?"height: 266px; width: 96%; left: 50%; transform: translateX(-50%);":"height: 366px; width: calc(366px * 16 / 9);"}\n    border: 0;\n    border-radius: 8px;\n  }\n  #heygen-streaming-container {\n    width: 100%;\n    height: 100%;\n  }\n  #heygen-streaming-container iframe {\n    width: 100%;\n    height: 100%;\n    border: 0;\n  }\n  `;
-      const iframe=document.createElement("iframe");
-      iframe.allowFullscreen=!1,iframe.title="Streaming Embed",iframe.role="dialog",iframe.allow="microphone",iframe.src=url;
-      let visible=!1,initial=!1;
-      window.addEventListener("message",(e=>{
-        e.origin===host&&e.data&&e.data.type&&"streaming-embed"===e.data.type&&("init"===e.data.action?(initial=!0,wrapDiv.classList.toggle("show",initial)):"show"===e.data.action?(visible=!0,wrapDiv.classList.toggle("expand",visible)):"hide"===e.data.action&&(visible=!1,wrapDiv.classList.toggle("expand",visible))
-      }));
-      container.appendChild(iframe),wrapDiv.appendChild(stylesheet),wrapDiv.appendChild(container),document.body.appendChild(wrapDiv)
-    }(globalThis);
-  </script>
-</body>
-</html>
+
+  <div class="header">Pergunte ao TigerCOE</div>
+
+  <div class="avatar-fixed">
+    <iframe 
+      src="https://labs.heygen.com/guest/streaming-embed?share=eyJxdWFsaXR5IjoiaGlnaCIsImF2YXRhck5hbWUiOiJQZWRyb19Qcm9mZXNzaW9uYWxMb29rMl9w%0AdWJsaWMiLCJwcmV2aWV3SW1nIjoiaHR0cHM6Ly9maWxlczIuaGV5Z2VuLmFpL2F2YXRhci92My9m%0AOWM5NGFlN2JkMTU0NWU4YjY1MzFhOT
+
+
