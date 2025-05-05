@@ -2,89 +2,67 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Center Of Excellence TD SYNNEX</title>
+  <title>Center Of Excellence TD SYNNEX COE </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     html, body {
       margin: 0;
       padding: 0;
-      height: 100%;
       background: #fff;
+      font-family: Arial, sans-serif;
     }
+
     .header {
-      background: #328266;
+      background: #328266; /* verde petróleo */
       color: #fff;
       text-align: center;
       font-size: 2rem;
-      padding: 20px 10px 10px 10px;
+      padding: 20px 10px;
       letter-spacing: 1px;
     }
+
     .avatar-wrapper {
-      width: 100vw;
-      height: calc(100vh - 60px);
+      width: 100%;
+      max-width: 100vw;
+      aspect-ratio: 9 / 16;
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
       background: #fff;
+      margin: 0 auto;
     }
-    #heygen-streaming-embed,
-    #heygen-streaming-container,
-    #heygen-streaming-container iframe {
-      width: 100vw !important;
-      max-width: 100vw !important;
-      height: 100% !important;
-      max-height: 100% !important;
-      object-fit: contain !important;
-      border: none !important;
-      background: #fff !important;
-      margin: 0 !important;
-      padding: 0 !important;
-      box-sizing: border-box !important;
+
+    .avatar-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      object-fit: contain;
     }
+
     @media (max-width: 600px) {
-      .header { font-size: 1.2rem; padding: 10px 5px; }
+      .header {
+        font-size: 1.2rem;
+        padding: 10px 5px;
+      }
+
       .avatar-wrapper {
-        height: calc(100vh - 40px);
+        aspect-ratio: 9 / 18;
       }
     }
   </style>
 </head>
 <body>
+
   <div class="header">Center Of Excellence TD SYNNEX</div>
-  <div class="avatar-wrapper" id="avatar-wrapper"></div>
-  <script>
-  !function(window){
-    const host="https://labs.heygen.com",
-    url=host+"/guest/streaming-embed?share=eyJxdWFsaXR5IjoiaGlnaCIsImF2YXRhck5hbWUiOiJQZWRyb19Qcm9mZXNzaW9uYWxMb29rMl9w%0D%0AdWJsaWMiLCJwcmV2aWV3SW1nIjoiaHR0cHM6Ly9maWxlczIuaGV5Z2VuLmFpL2F2YXRhci92My9m%0D%0AOWM5NGFlN2JkMTU0NWU4YjY1MzFhOTFiYTk3NmFkOV81NTkxMC9wcmV2aWV3X3RhbGtfMS53ZWJw%0D%0AIiwibmVlZFJlbW92ZUJhY2tncm91bmQiOnRydWUsImtub3dsZWRnZUJhc2VJZCI6ImRlZjE5M2U3%0D%0AM2M2ZjRmM2M5ZDI3ZjJjZTk2NGU1YWQ3IiwidXNlcm5hbWUiOiI4ODlhZWQ4YjdiMTM0NzgzYjlh%0D%0ANzllOWZmYTA2NzUzOCJ9&inIFrame=1",
-    wrapDiv=document.createElement("div");
-    wrapDiv.id="heygen-streaming-embed";
-    const container=document.createElement("div");
-    container.id="heygen-streaming-container";
-    const stylesheet=document.createElement("style");
-    stylesheet.innerHTML=`
-      #heygen-streaming-embed,
-      #heygen-streaming-container,
-      #heygen-streaming-container iframe {
-        width: 100vw !important;
-        max-width: 100vw !important;
-        height: 100% !important;
-        max-height: 100% !important;
-        object-fit: contain !important;
-        border: none !important;
-        background: #fff !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        box-sizing: border-box !important;
-      }
-    `;
-    const iframe=document.createElement("iframe");
-    iframe.allowFullscreen=!1,iframe.title="Streaming Embed",iframe.role="dialog",iframe.allow="microphone",iframe.src=url;
-    container.appendChild(iframe);
-    wrapDiv.appendChild(stylesheet);
-    wrapDiv.appendChild(container);
-    document.getElementById('avatar-wrapper').appendChild(wrapDiv);
-  }(globalThis);
-  </script>
+
+  <div class="avatar-wrapper">
+    <iframe 
+      src="https://labs.heygen.com/guest/streaming-embed?share=eyJxdWFsaXR5IjoiaGlnaCIsImF2YXRhck5hbWUiOiJQZWRyb19Qcm9mZXNzaW9uYWxMb29rMl9w%0D%0AdWJsaWMiLCJwcmV2aWV3SW1nIjoiaHR0cHM6Ly9maWxlczIuaGV5Z2VuLmFpL2F2YXRhci92My9m%0D%0AOWM5NGFlN2JkMTU0NWU4YjY1MzFhOTFiYTk3NmFkOV81NTkxMC9wcmV2aWV3X3RhbGtfMS53ZWJw%0D%0AIiwibmVlZFJlbW92ZUJhY2tncm91bmQiOnRydWUsImtub3dsZWRnZUJhc2VJZCI6ImRlZjE5M2U3%0D%0AM2M2ZjRmM2M5ZDI3ZjJjZTk2NGU1YWQ3IiwidXNlcm5hbWUiOiI4ODlhZWQ4YjdiMTM0NzgzYjlh%0D%0ANzllOWZmYTA2NzUzOCJ9&inIFrame=1"
+      allow="microphone"
+      title="Heygen Avatar"
+    ></iframe>
+  </div>
+
 </body>
 </html>
