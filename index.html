@@ -1,68 +1,236 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Center Of Excellence TD SYNNEX COE</title>
+  <title>Catálogo de Soluções IBM - TD SYNNEX</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    html, body {
+    :root {
+      --azul: #003366;
+      --azul-claro: #e6f0fa;
+      --azul-menu: #005b96;
+      --cinza: #f7f7f7;
+      --fonte: 'Segoe UI', Arial, sans-serif;
+    }
+    body {
       margin: 0;
-      padding: 0;
-      background: #fff;
-      font-family: Arial, sans-serif;
+      font-family: var(--fonte);
+      background: var(--cinza);
+      color: #222;
     }
-
-    .header {
-      background: #328266; /* verde petróleo */
+    header {
+      background: var(--azul);
       color: #fff;
+      padding: 2rem 1rem 1rem 1rem;
       text-align: center;
-      font-size: 2rem;
-      padding: 20px 10px;
-      letter-spacing: 1px;
     }
-
-    .avatar-wrapper {
-      width: 100%;
-      max-width: 100vw;
-      aspect-ratio: 9 / 16;
-      overflow: hidden;
+    .container {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #fff;
+      min-height: 100vh;
+    }
+    nav {
+      min-width: 220px;
+      background: var(--azul-menu);
+      color: #fff;
+      padding: 2rem 1rem 1rem 1rem;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+    }
+    nav h2 {
+      color: #fff;
+      font-size: 1.2rem;
+      margin-top: 0;
+    }
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0 0 0;
+    }
+    nav ul li {
+      margin-bottom: 1rem;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav ul li a:hover {
+      color: #ffd700;
+    }
+    main {
+      flex: 1;
+      padding: 2rem 1rem;
+      max-width: 900px;
       margin: 0 auto;
     }
-
-    .avatar-wrapper iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      object-fit: contain;
+    section {
+      background: #fff;
+      margin-bottom: 2rem;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
-
-    @media (max-width: 600px) {
-      .header {
-        font-size: 1.2rem;
-        padding: 10px 5px;
+    h2, h3 {
+      color: var(--azul);
+    }
+    .benefits, .questions, .competitors {
+      margin: 1.5rem 0;
+    }
+    .competitors {
+      background: var(--azul-claro);
+      padding: 1rem;
+      border-radius: 6px;
+    }
+    .subtitle {
+      color: #0072c6;
+      font-weight: bold;
+    }
+    /* Responsivo */
+    @media (max-width: 900px) {
+      .container {
+        flex-direction: column;
       }
-
-      .avatar-wrapper {
-        aspect-ratio: 9 / 18;
+      nav {
+        position: static;
+        width: 100%;
+        height: auto;
+        min-width: unset;
+        padding: 1rem;
+      }
+      main {
+        padding: 1rem;
+      }
+    }
+    /* Menu mobile */
+    #menu-toggle {
+      display: none;
+    }
+    .menu-icon {
+      display: none;
+      font-size: 2rem;
+      background: var(--azul-menu);
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border: none;
+      cursor: pointer;
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      z-index: 1000;
+    }
+    @media (max-width: 700px) {
+      nav {
+        display: none;
+        position: fixed;
+        left: 0; top: 0; bottom: 0;
+        width: 220px;
+        z-index: 999;
+        height: 100vh;
+        overflow-y: auto;
+      }
+      #menu-toggle:checked + nav {
+        display: block;
+      }
+      .menu-icon {
+        display: block;
+      }
+      main {
+        margin-top: 3.5rem;
       }
     }
   </style>
 </head>
 <body>
-
-  <div class="header">Center Of Excellence TD SYNNEX</div>
-
-  <div class="avatar-wrapper">
-    <iframe 
-      src="https://labs.heygen.com/guest/streaming-embed?share=eyJxdWFsaXR5IjoiaGlnaCIsImF2YXRhck5hbWUiOiJQZWRyb19Qcm9mZXNzaW9uYWxMb29rMl9w%0D%0AdWJsaWMiLCJwcmV2aWV3SW1nIjoiaHR0cHM6Ly9maWxlczIuaGV5Z2VuLmFpL2F2YXRhci92My9m%0D%0AOWM5NGFlN2JkMTU0NWU4YjY1MzFhOTFiYTk3NmFkOV81NTkxMC9wcmV2aWV3X3RhbGtfMS53ZWJw%0D%0AIiwibmVlZFJlbW92ZUJhY2tncm91bmQiOnRydWUsImtub3dsZWRnZUJhc2VJZCI6ImRlZjE5M2U3%0D%0AM2M2ZjRmM2M5ZDI3ZjJjZTk2NGU1YWQ3IiwidXNlcm5hbWUiOiI4ODlhZWQ4YjdiMTM0NzgzYjlh%0D%0ANzllOWZmYTA2NzUzOCJ9&inIFrame=1"
-      allow="microphone"
-      title="Heygen Avatar"
-    ></iframe>
+  <header>
+    <h1>Catálogo de Soluções IBM - TD SYNNEX</h1>
+    <p>Automação, Dados, IA, Segurança, Sustentabilidade e mais</p>
+  </header>
+  <div class="container">
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-icon" for="menu-toggle">&#9776; Menu</label>
+    <nav>
+      <h2>Soluções</h2>
+      <ul>
+        <li><a href="#watsonx">Watsonx</a></li>
+        <li><a href="#databand">DataBand</a></li>
+        <li><a href="#match360">Match 360</a></li>
+        <li><a href="#planning">Planning Analytics</a></li>
+        <!-- Adicione mais seções conforme necessário -->
+      </ul>
+    </nav>
+    <main>
+      <section id="watsonx">
+        <h2>Watsonx</h2>
+        <div class="block">
+          <span class="subtitle">Descrição:</span>
+          <p>Plataforma de IA e dados para empresas, permitindo personalização e treinamento em dados confidenciais. Serviços: watsonx.ai, watsonx.data, watsonx.governance.</p>
+        </div>
+        <div class="block benefits">
+          <span class="subtitle">Benefícios:</span>
+          <ul>
+            <li>Melhoria na tomada de decisões com IA preditiva e prescritiva</li>
+            <li>Automação eficiente de processos</li>
+            <li>Personalização de interações com clientes</li>
+            <li>Gestão de dados aprimorada</li>
+            <li>Governança de IA</li>
+            <li>Acesso a modelos avançados</li>
+          </ul>
+        </div>
+        <div class="block questions">
+          <span class="subtitle">Perguntas de Prospecção:</span>
+          <ul>
+            <li>Quais são seus principais desafios na gestão de dados e processos de IA?</li>
+            <li>Como sua empresa planeja usar a IA para melhorar a experiência do cliente?</li>
+            <li>Que medidas você está tomando para garantir a conformidade e a governança?</li>
+          </ul>
+        </div>
+        <div class="block competitors">
+          <span class="subtitle">Principais Concorrentes e Diferenciais:</span>
+          <ul>
+            <li><b>KNIME:</b> Forte em ciência de dados sem código, mas Watsonx oferece mais ferramentas de IA e gestão de dados.</li>
+            <li><b>Azure Synapse:</b> Watsonx tem integração e governança superiores.</li>
+            <li><b>Outros:</b> Watsonx permite personalização profunda e segura, além de automação e governança robustas.</li>
+          </ul>
+        </div>
+      </section>
+      <section id="databand">
+        <h2>DataBand</h2>
+        <div class="block">
+          <span class="subtitle">Descrição:</span>
+          <p>Plataforma de observabilidade de dados para equipes de engenharia, automatizando coleta de metadados, detecção de anomalias e gestão de alertas.</p>
+        </div>
+        <div class="block benefits">
+          <span class="subtitle">Benefícios:</span>
+          <ul>
+            <li>Detecção precoce de incidentes</li>
+            <li>Resolução rápida de erros</li>
+            <li>Melhoria da confiabilidade dos dados</li>
+            <li>Gestão eficiente de incidentes de dados</li>
+            <li>Monitoramento de pipelines</li>
+            <li>Análise de impacto e linhagem de dados</li>
+          </ul>
+        </div>
+        <div class="block questions">
+          <span class="subtitle">Perguntas de Prospecção:</span>
+          <ul>
+            <li>Como sua empresa gerencia atualmente a qualidade e confiabilidade dos dados?</li>
+            <li>Quais desafios sua equipe enfrenta para monitorar e resolver incidentes?</li>
+            <li>Como os problemas de dados afetam seus processos e decisões?</li>
+          </ul>
+        </div>
+        <div class="block competitors">
+          <span class="subtitle">Principais Concorrentes e Diferenciais:</span>
+          <ul>
+            <li><b>Monte Carlo Data:</b> Foco em observabilidade, mas Databand automatiza coleta de metadados e gestão proativa.</li>
+            <li><b>Cribl:</b> Observação e roteamento de dados, mas Databand oferece alerta e correção avançados.</li>
+            <li><b>Precisely, Grafana Labs:</b> Databand integra-se ao pacote IBM e oferece análise e gestão proativa da qualidade dos dados.</li>
+          </ul>
+        </div>
+      </section>
+      <!-- Adicione mais seções conforme o catálogo -->
+    </main>
   </div>
-
 </body>
 </html>
