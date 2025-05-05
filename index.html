@@ -6,9 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     :root {
-      --azul: #003366;
-      --azul-claro: #e6f0fa;
-      --azul-menu: #005b96;
+      --verde-petroleo: #11403b;
+      --amarelo: #ffd600;
+      --branco: #fff;
+      --preto: #111;
       --cinza: #f7f7f7;
       --fonte: 'Segoe UI', Arial, sans-serif;
     }
@@ -16,31 +17,33 @@
       margin: 0;
       font-family: var(--fonte);
       background: var(--cinza);
-      color: #222;
+      color: var(--preto);
     }
     header {
-      background: var(--azul);
-      color: #fff;
+      background: linear-gradient(90deg, #11403b 0%, #1a5c53 100%);
+      color: var(--amarelo);
       padding: 2rem 1rem 1rem 1rem;
       text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     }
     .container {
       display: flex;
       min-height: 100vh;
     }
     nav {
-      min-width: 220px;
-      background: var(--azul-menu);
-      color: #fff;
+      min-width: 230px;
+      background: var(--preto);
+      color: var(--amarelo);
       padding: 2rem 1rem 1rem 1rem;
       position: sticky;
       top: 0;
       height: 100vh;
     }
     nav h2 {
-      color: #fff;
+      color: var(--amarelo);
       font-size: 1.2rem;
       margin-top: 0;
+      letter-spacing: 1px;
     }
     nav ul {
       list-style: none;
@@ -51,13 +54,17 @@
       margin-bottom: 1rem;
     }
     nav ul li a {
-      color: #fff;
+      color: var(--amarelo);
       text-decoration: none;
       font-weight: 500;
-      transition: color 0.2s;
+      transition: color 0.2s, background 0.2s;
+      padding: 0.2em 0.5em;
+      border-radius: 4px;
+      display: block;
     }
-    nav ul li a:hover {
-      color: #ffd700;
+    nav ul li a:hover, nav ul li a.active {
+      color: var(--verde-petroleo);
+      background: var(--amarelo);
     }
     main {
       flex: 1;
@@ -66,26 +73,47 @@
       margin: 0 auto;
     }
     section {
-      background: #fff;
+      background: var(--branco);
       margin-bottom: 2rem;
       padding: 2rem;
-      border-radius: 8px;
+      border-radius: 10px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      border-left: 8px solid var(--verde-petroleo);
+      transition: box-shadow 0.2s;
+    }
+    section:hover {
+      box-shadow: 0 4px 16px rgba(17,64,59,0.10);
     }
     h2, h3 {
-      color: var(--azul);
+      color: var(--verde-petroleo);
+      margin-top: 0;
     }
     .benefits, .questions, .competitors {
-      margin: 1.5rem 0;
+      margin: 1.2rem 0;
     }
     .competitors {
-      background: var(--azul-claro);
+      background: var(--amarelo);
+      color: var(--preto);
       padding: 1rem;
       border-radius: 6px;
+      margin-top: 1.2rem;
     }
     .subtitle {
-      color: #0072c6;
+      color: var(--verde-petroleo);
       font-weight: bold;
+      letter-spacing: 0.5px;
+    }
+    .tag {
+      display: inline-block;
+      background: linear-gradient(90deg, #11403b 60%, #1a5c53 100%);
+      color: var(--amarelo);
+      padding: 0.2em 0.7em;
+      border-radius: 12px;
+      font-size: 0.95em;
+      margin-bottom: 1em;
+      margin-right: 0.5em;
+      font-weight: 600;
+      letter-spacing: 0.5px;
     }
     /* Responsivo */
     @media (max-width: 900px) {
@@ -104,14 +132,12 @@
       }
     }
     /* Menu mobile */
-    #menu-toggle {
-      display: none;
-    }
+    #menu-toggle { display: none; }
     .menu-icon {
       display: none;
       font-size: 2rem;
-      background: var(--azul-menu);
-      color: #fff;
+      background: var(--preto);
+      color: var(--amarelo);
       padding: 0.5rem 1rem;
       border: none;
       cursor: pointer;
@@ -125,7 +151,7 @@
         display: none;
         position: fixed;
         left: 0; top: 0; bottom: 0;
-        width: 220px;
+        width: 230px;
         z-index: 999;
         height: 100vh;
         overflow-y: auto;
@@ -153,83 +179,155 @@
     <nav>
       <h2>Soluções</h2>
       <ul>
-        <li><a href="#watsonx">Watsonx</a></li>
-        <li><a href="#databand">DataBand</a></li>
-        <li><a href="#match360">Match 360</a></li>
-        <li><a href="#planning">Planning Analytics</a></li>
-        <!-- Adicione mais seções conforme necessário -->
+        <li><a href="#automacao">Automação de Negócios</a></li>
+        <li><a href="#integracao">Integração e APIs</a></li>
+        <li><a href="#automacao-ti">Automação de TI</a></li>
+        <li><a href="#seguranca">Segurança</a></li>
+        <li><a href="#dados-ia">Dados e Inteligência Artificial</a></li>
+        <li><a href="#sustentabilidade">Sustentabilidade e Operações</a></li>
       </ul>
     </nav>
     <main>
-      <section id="watsonx">
-        <h2>Watsonx</h2>
+      <section id="automacao">
+        <span class="tag">Automação de Negócios</span>
+        <h2>Automação de Negócios</h2>
         <div class="block">
-          <span class="subtitle">Descrição:</span>
-          <p>Plataforma de IA e dados para empresas, permitindo personalização e treinamento em dados confidenciais. Serviços: watsonx.ai, watsonx.data, watsonx.governance.</p>
+          <span class="subtitle">Fluxo de Trabalho:</span>
+          Automatiza processos digitais, aumenta produtividade, integra BPM e gestão de casos, melhora colaboração e visibilidade.
         </div>
-        <div class="block benefits">
-          <span class="subtitle">Benefícios:</span>
-          <ul>
-            <li>Melhoria na tomada de decisões com IA preditiva e prescritiva</li>
-            <li>Automação eficiente de processos</li>
-            <li>Personalização de interações com clientes</li>
-            <li>Gestão de dados aprimorada</li>
-            <li>Governança de IA</li>
-            <li>Acesso a modelos avançados</li>
-          </ul>
+        <div class="block">
+          <span class="subtitle">Watson Orchestrate:</span>
+          Plataforma SaaS de automação com assistente digital, integração de tarefas, fácil uso, personalizável, acelera processos de RH e outros departamentos.
         </div>
-        <div class="block questions">
-          <span class="subtitle">Perguntas de Prospecção:</span>
-          <ul>
-            <li>Quais são seus principais desafios na gestão de dados e processos de IA?</li>
-            <li>Como sua empresa planeja usar a IA para melhorar a experiência do cliente?</li>
-            <li>Que medidas você está tomando para garantir a conformidade e a governança?</li>
-          </ul>
+        <div class="block">
+          <span class="subtitle">Automação Robótica de Processos (RPA):</span>
+          Robôs de software automatizam tarefas repetitivas, reduzem erros, aumentam produtividade, fácil integração e escalabilidade.
         </div>
-        <div class="block competitors">
-          <span class="subtitle">Principais Concorrentes e Diferenciais:</span>
-          <ul>
-            <li><b>KNIME:</b> Forte em ciência de dados sem código, mas Watsonx oferece mais ferramentas de IA e gestão de dados.</li>
-            <li><b>Azure Synapse:</b> Watsonx tem integração e governança superiores.</li>
-            <li><b>Outros:</b> Watsonx permite personalização profunda e segura, além de automação e governança robustas.</li>
-          </ul>
+        <div class="block">
+          <span class="subtitle">Mineração de Processos:</span>
+          Analisa registros de atividades para identificar gargalos, otimizar processos, aumentar eficiência e garantir conformidade.
         </div>
       </section>
-      <section id="databand">
-        <h2>DataBand</h2>
+      <section id="integracao">
+        <span class="tag">Integração e APIs</span>
+        <h2>Integração e APIs</h2>
         <div class="block">
-          <span class="subtitle">Descrição:</span>
-          <p>Plataforma de observabilidade de dados para equipes de engenharia, automatizando coleta de metadados, detecção de anomalias e gestão de alertas.</p>
+          <span class="subtitle">API Connect:</span>
+          Gerenciamento completo de APIs, criação, proteção, análise e monetização, com alta segurança e flexibilidade de implantação.
         </div>
-        <div class="block benefits">
-          <span class="subtitle">Benefícios:</span>
-          <ul>
-            <li>Detecção precoce de incidentes</li>
-            <li>Resolução rápida de erros</li>
-            <li>Melhoria da confiabilidade dos dados</li>
-            <li>Gestão eficiente de incidentes de dados</li>
-            <li>Monitoramento de pipelines</li>
-            <li>Análise de impacto e linhagem de dados</li>
-          </ul>
+        <div class="block">
+          <span class="subtitle">Aspera:</span>
+          Transferência ultrarrápida e segura de grandes volumes de dados em redes IP, integração fácil, otimização para alta latência.
         </div>
-        <div class="block questions">
-          <span class="subtitle">Perguntas de Prospecção:</span>
-          <ul>
-            <li>Como sua empresa gerencia atualmente a qualidade e confiabilidade dos dados?</li>
-            <li>Quais desafios sua equipe enfrenta para monitorar e resolver incidentes?</li>
-            <li>Como os problemas de dados afetam seus processos e decisões?</li>
-          </ul>
-        </div>
-        <div class="block competitors">
-          <span class="subtitle">Principais Concorrentes e Diferenciais:</span>
-          <ul>
-            <li><b>Monte Carlo Data:</b> Foco em observabilidade, mas Databand automatiza coleta de metadados e gestão proativa.</li>
-            <li><b>Cribl:</b> Observação e roteamento de dados, mas Databand oferece alerta e correção avançados.</li>
-            <li><b>Precisely, Grafana Labs:</b> Databand integra-se ao pacote IBM e oferece análise e gestão proativa da qualidade dos dados.</li>
-          </ul>
+        <div class="block">
+          <span class="subtitle">Data Power:</span>
+          Gateway de integração e segurança, conecta sistemas e aplicativos com alta disponibilidade, reduz custos e complexidade.
         </div>
       </section>
-      <!-- Adicione mais seções conforme o catálogo -->
+      <section id="automacao-ti">
+        <span class="tag">Automação de TI</span>
+        <h2>Automação de TI</h2>
+        <div class="block">
+          <span class="subtitle">Instana:</span>
+          Observabilidade full stack automatizada, monitora desempenho de aplicativos, detecta problemas em tempo real, facilita diagnóstico.
+        </div>
+        <div class="block">
+          <span class="subtitle">Turbonomic:</span>
+          Gerenciamento automático de recursos de aplicativos, otimiza desempenho e custos em ambientes híbridos/multinuvem.
+        </div>
+        <div class="block">
+          <span class="subtitle">SevOne:</span>
+          Monitoramento de desempenho de redes, detecta e previne problemas, integra dados de múltiplos fornecedores, planejamento de capacidade.
+        </div>
+        <div class="block">
+          <span class="subtitle">Apptio:</span>
+          Gestão de custos e FinOps para nuvem, análise e recomendações para otimizar gastos, colaboração entre TI, finanças e negócios.
+        </div>
+      </section>
+      <section id="seguranca">
+        <span class="tag">Segurança</span>
+        <h2>Segurança</h2>
+        <div class="block">
+          <span class="subtitle">Guardium Data Protection:</span>
+          Descobre, audita, monitora e protege dados confidenciais em bancos de dados, arquivos e nuvem, facilita conformidade.
+        </div>
+        <div class="block">
+          <span class="subtitle">Guardium Data Encryption:</span>
+          Criptografia de dados, tokenização, mascaramento e gerenciamento de chaves, protege dados em ambientes híbridos e multinuvem.
+        </div>
+        <div class="block">
+          <span class="subtitle">QRadar SIEM:</span>
+          Correlaciona eventos de segurança, detecta ameaças, automatiza investigações, fácil integração, visibilidade total.
+        </div>
+        <div class="block">
+          <span class="subtitle">Verify SaaS:</span>
+          Gestão de identidade e acesso (IAM), autenticação baseada em risco, logon único, governança e consentimento.
+        </div>
+        <div class="block">
+          <span class="subtitle">Verify Identity Protection:</span>
+          Gestão da postura de segurança de identidade (ISPM), detecta pontos cegos, corrige ameaças e vulnerabilidades em sistemas IAM.
+        </div>
+        <div class="block">
+          <span class="subtitle">Verify Privileged (PAM):</span>
+          Gerenciamento de contas privilegiadas, cofre de senhas, controle de privilégios, auditoria e proteção de acessos críticos.
+        </div>
+        <div class="block">
+          <span class="subtitle">Maas360:</span>
+          Gerenciamento unificado de endpoints (UEM), protege dispositivos, aplicativos e dados, análise de IA, integração rápida.
+        </div>
+        <div class="block">
+          <span class="subtitle">Data Security Posture Management (DSPM):</span>
+          Identifica dados sensíveis em nuvem, avalia vulnerabilidades, automatiza remediação e garante conformidade.
+        </div>
+      </section>
+      <section id="dados-ia">
+        <span class="tag">Dados e Inteligência Artificial</span>
+        <h2>Dados e Inteligência Artificial</h2>
+        <div class="block">
+          <span class="subtitle">Watsonx:</span>
+          Plataforma de IA e dados, personalização e treinamento de modelos, governança, automação e gestão de dados, integração com watsonx.ai, watsonx.data, watsonx.governance.
+        </div>
+        <div class="block">
+          <span class="subtitle">DataBand:</span>
+          Observabilidade de dados, coleta automática de metadados, detecção de anomalias, gestão de incidentes, análise de impacto e linhagem.
+        </div>
+        <div class="block">
+          <span class="subtitle">Match 360:</span>
+          Unifica dados mestres de múltiplas fontes, visão 360º de clientes, elimina duplicidades, acelera resultados e aumenta confiança em IA.
+        </div>
+        <div class="block">
+          <span class="subtitle">Planning Analytics:</span>
+          Planejamento, orçamento e previsão com IA, integração com ERPs, consultas em linguagem natural, escalabilidade e colaboração.
+        </div>
+        <div class="block">
+          <span class="subtitle">Watson Query:</span>
+          Consulta distribuída universal, integra múltiplas fontes de dados sem replicação, virtualização, cache inteligente, conformidade.
+        </div>
+        <div class="block">
+          <span class="subtitle">Watson Knowledge Catalog:</span>
+          Catálogo de dados corporativos, descoberta inteligente, autoatendimento, governança, qualidade e proteção de dados.
+        </div>
+      </section>
+      <section id="sustentabilidade">
+        <span class="tag">Sustentabilidade e Operações</span>
+        <h2>Sustentabilidade e Operações</h2>
+        <div class="block">
+          <span class="subtitle">Maximo Application Suite:</span>
+          Gestão de ativos, manutenção preditiva, monitoramento, planejamento, acesso móvel, reduz custos e aumenta vida útil dos ativos.
+        </div>
+        <div class="block">
+          <span class="subtitle">Inspeção Visual:</span>
+          Plataforma de IA para análise de imagens e vídeos, detecção de defeitos em tempo real, fácil de usar, acelera controle de qualidade.
+        </div>
+        <div class="block">
+          <span class="subtitle">Envizi:</span>
+          Plataforma de dados ESG/sustentabilidade, coleta, análise e relatórios de indicadores ambientais, sociais e de governança, acelera descarbonização.
+        </div>
+        <div class="block">
+          <span class="subtitle">Sterling Supply Chain Business Network:</span>
+          Rede empresarial para colaboração na cadeia de suprimentos, insights em tempo real, automação, visibilidade ponta a ponta.
+        </div>
+      </section>
     </main>
   </div>
 </body>
