@@ -1,1625 +1,269 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Sou o TigerCOE para soluções IBM da TDSynnex</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    :root {
-      --verde-petroleo: #11403b;
-      --verde-petroleo2: #1a5c53;
-      --amarelo: #ffd600;
-      --branco: #fff;
-      --preto: #111;
-      --cinza: #f7f7f7;
-      --fonte: 'Segoe UI', Arial, sans-serif;
-    }
-    body {
-      margin: 0;
-      font-family: var(--fonte);
-      background: var(--cinza);
-      color: var(--preto);
-    }
-    header {
-      background: linear-gradient(90deg, #11403b 0%, #1a5c53 100%);
-      color: var(--amarelo);
-      padding: 2.5rem 1rem 1.2rem 1rem;
-      text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      position: relative;
-    }
-    .lang-switch {
-      position: absolute;
-      top: 1.5rem;
-      right: 2rem;
-      display: flex;
-      gap: 0.5rem;
-    }
-    .lang-btn {
-      background: var(--amarelo);
-      color: var(--verde-petroleo);
-      border: none;
-      font-weight: bold;
-      border-radius: 6px;
-      padding: 0.3em 1em;
-      cursor: pointer;
-      font-size: 1em;
-      transition: background 0.2s, color 0.2s;
-    }
-    .lang-btn.active, .lang-btn:hover {
-      background: var(--preto);
-      color: var(--amarelo);
-    }
-    .main-content {
-      max-width: 920px;
-      margin: 2.5rem auto 2rem auto;
-      padding: 0 1rem;
-    }
-    .solucao {
-      background: var(--branco);
-      margin-bottom: 2rem;
-      padding: 2rem 2rem 1.5rem 2rem;
-      border-radius: 14px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      border-left: 8px solid var(--verde-petroleo);
-      transition: box-shadow 0.2s;
-    }
-    .solucao:hover {
-      box-shadow: 0 4px 16px rgba(17,64,59,0.10);
-    }
-    .tag {
-      display: inline-block;
-      background: linear-gradient(90deg, #11403b 60%, #1a5c53 100%);
-      color: var(--amarelo);
-      padding: 0.2em 0.7em;
-      border-radius: 12px;
-      font-size: 0.95em;
-      margin-bottom: 1em;
-      margin-right: 0.5em;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-    }
-    h2 {
-      color: var(--verde-petroleo);
-      margin-top: 0.2em;
-      margin-bottom: 0.6em;
-    }
-    .solucao ul {
-      margin: 0.3em 0 0.8em 1.2em;
-      padding: 0;
-    }
-    .solucao strong {
-      color: var(--verde-petroleo2);
-    }
-    @media (max-width: 700px) {
-      .main-content { padding: 0 0.2rem; }
-      .solucao { padding: 1.2rem 0.7rem 1rem 0.7rem; }
-      .lang-switch { right: 1rem; }
-    }
-  </style>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const ptBtn = document.getElementById('pt-btn');
-      const enBtn = document.getElementById('en-btn');
-      const esBtn = document.getElementById('es-btn');
-      const ptContent = document.getElementById('pt-content');
-      const enContent = document.getElementById('en-content');
-      const esContent = document.getElementById('es-content');
-
-      function showContent(lang) {
-        ptContent.style.display = lang === 'pt' ? '' : 'none';
-        enContent.style.display = lang === 'en' ? '' : 'none';
-        esContent.style.display = lang === 'es' ? '' : 'none';
-        ptBtn.classList.toggle('active', lang === 'pt');
-        enBtn.classList.toggle('active', lang === 'en');
-        esBtn.classList.toggle('active', lang === 'es');
-      }
-
-      ptBtn.addEventListener('click', () => showContent('pt'));
-      enBtn.addEventListener('click', () => showContent('en'));
-      esBtn.addEventListener('click', () => showContent('es'));
-
-      // Default: PT
-      showContent('pt');
-    });
-  </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COE Isis - TD SYNNEX Center of Excellence</title>
+    <style>
+        :root {
+            --petroleum-green-dark: #0A3430;
+            --petroleum-green-light: #145E54;
+            --tdsynnex-yellow: #FFD166;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--petroleum-green-dark) 0%, var(--petroleum-green-light) 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+        }
+        
+        .digital-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+        
+        .digital-line {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+        }
+        
+        .digital-line:nth-child(1) {
+            width: 30%;
+            height: 1px;
+            top: 20%;
+            left: 10%;
+            animation: float 15s infinite ease-in-out;
+        }
+        
+        .digital-line:nth-child(2) {
+            width: 20%;
+            height: 1px;
+            top: 35%;
+            right: 15%;
+            animation: float 12s infinite ease-in-out reverse;
+        }
+        
+        .digital-line:nth-child(3) {
+            width: 40%;
+            height: 1px;
+            bottom: 25%;
+            right: 5%;
+            animation: float 18s infinite ease-in-out;
+        }
+        
+        .digital-line:nth-child(4) {
+            width: 25%;
+            height: 1px;
+            bottom: 40%;
+            left: 20%;
+            animation: float 10s infinite ease-in-out reverse;
+        }
+        
+        .digital-dot {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+        }
+        
+        .digital-dot:nth-child(5) {
+            top: 15%;
+            left: 30%;
+            animation: pulse 4s infinite ease-in-out;
+        }
+        
+        .digital-dot:nth-child(6) {
+            top: 45%;
+            right: 25%;
+            animation: pulse 6s infinite ease-in-out;
+        }
+        
+        .digital-dot:nth-child(7) {
+            bottom: 20%;
+            left: 40%;
+            animation: pulse 5s infinite ease-in-out;
+        }
+        
+        .digital-dot:nth-child(8) {
+            bottom: 35%;
+            right: 15%;
+            animation: pulse 7s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) scaleX(1);
+            }
+            50% {
+                transform: translateY(10px) scaleX(1.1);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.3;
+            }
+            50% {
+                transform: scale(1.5);
+                opacity: 0.6;
+            }
+        }
+        
+        .avatar-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .avatar-frame {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+        
+        @media (max-aspect-ratio: 1/1) {
+            .avatar-frame {
+                padding-top: 177.78%; /* 9:16 Aspect Ratio for portrait */
+            }
+        }
+        
+        @media (min-aspect-ratio: 4/3) {
+            .avatar-frame {
+                padding-top: 75%; /* 4:3 Aspect Ratio */
+            }
+        }
+        
+        .heygen-embed {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .brand-footer {
+            position: relative;
+            margin-top: 15px;
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .brand-name {
+            font-size: clamp(14px, 3vw, 20px);
+            font-weight: bold;
+            color: var(--tdsynnex-yellow);
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .avatar-title {
+            font-size: clamp(18px, 4vw, 28px);
+            font-weight: bold;
+            color: white;
+            margin-bottom: 20px;
+            text-align: center;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .coe-subtitle {
+            font-size: clamp(12px, 2vw, 16px);
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="lang-switch">
-      <button class="lang-btn" id="pt-btn">Português</button>
-      <button class="lang-btn" id="en-btn">English</button>
+    <div class="digital-elements">
+        <div class="digital-line"></div>
+        <div class="digital-line"></div>
+        <div class="digital-line"></div>
+        <div class="digital-line"></div>
+        <div class="digital-dot"></div>
+        <div class="digital-dot"></div>
+        <div class="digital-dot"></div>
+        <div class="digital-dot"></div>
     </div>
-    <h1>Sou o TigerCOE para soluções IBM da TDSynnex</h1>
-    <p style="color:var(--amarelo);font-size:1.15em;margin-top:0.7em;">
-      Automação, Dados, IA, Segurança, Sustentabilidade e mais
-    </p>
-  </header>
-  <div class="main-content">
-
-    <!-- PORTUGUÊS -->
-    <div id="pt-content">
-      <!-- SOLUÇÕES DE DADOS -->
-      <div class="solucao">
-        <span class="tag">Dados</span>
-        <h2>Soluções de Dados</h2>
-        <ul>
-          <li><strong>Data Fabric</strong><br>
-            Integra todos os dados corporativos e otimiza como fluem nos sistemas, garantindo escalabilidade analítica e proteção.
-          </li>
-          <li><strong>watsonx.data</strong><br>
-            Plataforma de data lakehouse otimizada para workloads de IA, baseada em Presto, com suporte a governança e acesso federado.
-          </li>
-          <li><strong>Data Intelligence</strong><br>
-            Promove inteligência sobre dados e metadados com foco em reutilização, qualidade e rastreabilidade.
-          </li>
-          <li><strong>Data Product Hub</strong><br>
-            Permite a criação, gestão e compartilhamento de produtos de dados reutilizáveis, com controle de versionamento e políticas de acesso.
-          </li>
-          <li><strong>Knowledge Catalog</strong><br>
-            Catálogo empresarial de dados com funcionalidades de glossário de negócios, classificação automatizada, qualidade de dados e integração com IA.
-          </li>
-          <li><strong>Manta Data Lineage</strong><br>
-            Rastreia automaticamente a origem e o destino dos dados em pipelines e aplicações, permitindo visibilidade e impacto de alterações.
-          </li>
-          <li><strong>Data Integration</strong><br>
-            Conjunto de ferramentas para ingestão, transformação e orquestração de dados em batch e streaming.
-          </li>
-          <li><strong>DataStage</strong><br>
-            Ferramenta de integração ETL com design visual e paralelismo, utilizada para preparar e mover dados entre fontes diversas.
-          </li>
-          <li><strong>Databand</strong><br>
-            Plataforma de observabilidade de dados que detecta e alerta sobre falhas, atrasos ou degradação na execução de pipelines.
-          </li>
-          <li><strong>StreamSets</strong><br>
-            Ferramenta para integração contínua de dados em movimento (streaming), com suporte a múltiplos formatos e destinos.
-          </li>
-          <li><strong>Data Security</strong><br>
-            Gerencia e protege dados sensíveis em conformidade com normas regulatórias.
-          </li>
-          <li><strong>Guardium Data Security Center</strong><br>
-            Plataforma centralizada para descoberta de dados sensíveis, aplicação de políticas, mascaramento, criptografia e auditoria.
-          </li>
-          <li><strong>Data Storage</strong><br>
-            Armazenamento definido por software, escalável e resiliente, para ambientes híbridos e multicloud.
-          </li>
-          <li><strong>Storage Ceph</strong><br>
-            Solução de armazenamento de blocos, arquivos e objetos baseada em software open source, adequada para ambientes distribuídos e cloud-native.
-          </li>
-        </ul>
-      </div>
-
-      <!-- SOLUÇÕES DE INTELIGÊNCIA ARTIFICIAL -->
-      <div class="solucao">
-        <span class="tag">Inteligência Artificial</span>
-        <h2>Soluções de Inteligência Artificial</h2>
-        <ul>
-          <li><strong>AI Productivity</strong><br>
-            Assistentes de IA para produtividade corporativa:
-            <ul>
-              <li><strong>watsonx Code Assistant</strong><br>
-                Gera automaticamente código (ex: COBOL, YAML, Ansible), acelerando desenvolvimento e modernização de aplicações legadas.
-              </li>
-              <li><strong>watsonx Orchestrate</strong><br>
-                Executa tarefas corporativas com IA baseada em linguagem natural. Atua como agente inteligente conectado a APIs e sistemas como Slack, Workday, Salesforce etc.
-              </li>
-              <li><strong>Planning Analytics</strong><br>
-                Ferramenta para planejamento financeiro, orçamentos e modelagem preditiva, com análise em tempo real e suporte a IA.
-              </li>
-            </ul>
-          </li>
-          <li><strong>AI/ML Ops</strong><br>
-            Modelos, ferramentas e governança para uso seguro e escalável de IA:
-            <ul>
-              <li><strong>Modelos de IA</strong>
-                <ul>
-                  <li><strong>Granite</strong><br>
-                    Modelos fundacionais proprietários da IBM, treinados para geração de texto, classificação, resumo e Q&A com foco corporativo.
-                  </li>
-                  <li><strong>Meta Llama</strong><br>
-                    Modelos open source desenvolvidos pela Meta, utilizados pela IBM em ambientes de IA generativa com foco em flexibilidade.
-                  </li>
-                  <li><strong>Mistral</strong><br>
-                    Modelos LLM compactos e eficientes, de código aberto, otimizados para execução em ambientes corporativos de baixa latência.
-                  </li>
-                </ul>
-              </li>
-              <li><strong>Ferramentas de IA</strong>
-                <ul>
-                  <li><strong>watsonx.ai</strong><br>
-                    Plataforma para treino, ajuste fino, implantação e inferência de modelos de IA generativa e machine learning.
-                  </li>
-                </ul>
-              </li>
-              <li><strong>Governança de IA</strong>
-                <ul>
-                  <li><strong>watsonx.governance</strong><br>
-                    Garante explicabilidade, rastreabilidade, gestão de risco e conformidade regulatória de modelos de IA usados em produção.
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-
-      <!-- APPLICATION DEVELOPMENT AND INTEGRATION -->
-      <div class="solucao">
-        <span class="tag">Desenvolvimento e Integração</span>
-        <h2>Application Development and Integration</h2>
-        <ul>
-          <li><strong>Application Development</strong>
-            <ul>
-              <li><strong>Enterprise Application Service for Java</strong><br>
-                Plataforma de desenvolvimento e execução de aplicações Java em ambientes corporativos, com suporte a modernização.
-              </li>
-            </ul>
-          </li>
-          <li><strong>Application Integration</strong>
-            <ul>
-              <li><strong>Hybrid iPaaS</strong><br>
-                Plataforma de integração como serviço para conectar aplicações e dados em ambientes híbridos e multicloud.
-              </li>
-              <li><strong>API Connect</strong><br>
-                Plataforma de gerenciamento de APIs que permite criar, proteger, publicar, analisar e monetizar APIs com segurança e governança.
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-
-      <!-- INFRASTRUCTURE AUTOMATION -->
-      <div class="solucao">
-        <span class="tag">Automação de Infraestrutura</span>
-        <h2>Solução de Infrastructure Automation</h2>
-        <ul>
-          <li><strong>Infrastructure Lifecycle Management</strong>
-            <ul>
-              <li><strong>Terraform</strong><br>
-                Ferramenta de infraestrutura como código (IaC) para provisionamento e gerenciamento automatizado de recursos.
-              </li>
-              <li><strong>Consul</strong><br>
-                Sistema de descoberta de serviços e configuração distribuída para microsserviços.
-              </li>
-              <li><strong>Nomad</strong><br>
-                Orquestrador leve para execução de workloads em containers, VMs ou bare-metal.
-              </li>
-              <li><strong>Vault</strong><br>
-                Gerenciamento seguro de segredos e criptografia para proteger dados sensíveis.<br>
-                <em>Nota: Todos os produtos acima são da HashiCorp (aquisição pendente pela IBM).</em>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-
-      <!-- IDENTITY & ACCESS MANAGEMENT -->
-      <div class="solucao">
-        <span class="tag">Identity & Access</span>
-        <h2>Identity & Access Management</h2>
-        <ul>
-          <li><strong>Verify</strong><br>
-            Solução de gerenciamento de identidade e autenticação com MFA, SSO e políticas de acesso baseadas em risco.
-          </li>
-          <li><strong>IBM Security Verify (SaaS e on-prem)</strong><br>
-            Autenticação, SSO, MFA, gerenciamento de acesso.
-          </li>
-          <li><strong>IBM Security Verify Governance</strong><br>
-            Governança de identidade e conformidade regulatória.
-          </li>
-          <li><strong>IBM Security Identity Manager</strong><br>
-            Plataforma tradicional de IAM (legado, ainda disponível para clientes existentes).
-          </li>
-        </ul>
-      </div>
-
-      <!-- NETWORK MANAGEMENT -->
-      <div class="solucao">
-        <span class="tag">Network Management</span>
-        <h2>Network Management</h2>
-        <ul>
-          <li><strong>NS1</strong><br>
-            Gerenciamento inteligente de tráfego DNS para garantir desempenho e resiliência de aplicações.
-          </li>
-          <li><strong>NS1®</strong><br>
-            Solução complementar para roteamento de tráfego baseado em políticas avançadas.
-          </li>
-          <li><strong>Hybrid Cloud Mesh</strong><br>
-            Malha de rede segura para conexão entre aplicações distribuídas em ambientes multicloud.
-          </li>
-          <li><strong>SevOne NPM</strong><br>
-            Plataforma de monitoramento de rede com análise de desempenho e visualização avançada.
-          </li>
-          <li><strong>Rapid Network Automation</strong><br>
-            Automação de redes com foco em agilidade operacional e provisionamento dinâmico.
-          </li>
-        </ul>
-      </div>
-
-      <!-- OBSERVABILITY -->
-      <div class="solucao">
-        <span class="tag">Observability</span>
-        <h2>Observability</h2>
-        <ul>
-          <li><strong>Instana</strong><br>
-            Plataforma de observabilidade baseada em IA com rastreamento distribuído em tempo real, métricas e logs.
-          </li>
-          <li><strong>Turbonomic</strong><br>
-            Automação inteligente de recursos de TI (CPU, memória, storage) com base em análise de demanda.
-          </li>
-          <li><strong>Concert</strong><br>
-            Automação de confiabilidade com foco em experiência do usuário final e orquestração de mudanças.
-          </li>
-        </ul>
-      </div>
-
-      <!-- FINOPS -->
-      <div class="solucao">
-        <span class="tag">FinOps</span>
-        <h2>FinOps & IT Financial Management</h2>
-        <ul>
-          <li><strong>Cloudability</strong><br>
-            Plataforma de gestão de custos multicloud, com foco em alocação, otimização e governança de gastos.
-          </li>
-          <li><strong>Kubecost</strong><br>
-            Ferramenta de visibilidade de custos em ambientes Kubernetes, com recomendações para redução de despesas.
-          </li>
-          <li><strong>Apptio</strong><br>
-            Gestão financeira de TI (TBM), com alocação de custos, ROI e suporte à tomada de decisão baseada em dados.
-          </li>
-          <li><strong>Targetprocess</strong><br>
-            Solução de portfólio ágil que conecta estratégia, execução e orçamento em tempo real.
-          </li>
-        </ul>
-      </div>
-
-      <!-- ASSET LIFECYCLE, ESG, ENVIRONMENTAL INTELLIGENCE -->
-      <div class="solucao">
-        <span class="tag">Ativos, ESG e Sustentabilidade</span>
-        <h2>Asset Lifecycle, ESG, Environmental Intelligence</h2>
-        <ul>
-          <li><strong>Maximo Application Suite</strong><br>
-            Gestão completa do ciclo de vida de ativos físicos, manutenção, inspeções e operações industriais.
-          </li>
-          <li><strong>Envizi ESG Suite</strong><br>
-            Plataforma de gestão de indicadores ESG, sustentabilidade e relatórios de conformidade.
-          </li>
-          <li><strong>Environmental Intelligence</strong><br>
-            Ferramenta analítica para riscos ambientais, previsão climática e planejamento sustentável.
-          </li>
-        </ul>
-      </div>
-
-      <!-- IBM CLOUD PAK FOR BUSINESS AUTOMATION -->
-      <div class="solucao">
-        <span class="tag">Automação de Negócios</span>
-        <h2>Solução IBM Cloud Pak for Business Automation</h2>
-        <ul>
-          <li><strong>IBM Business Automation Workflow (BAW)</strong><br>
-            Automatiza fluxos de trabalho de processos humanos e de sistemas.
-          </li>
-          <li><strong>IBM Robotic Process Automation (RPA)</strong><br>
-            Executa tarefas repetitivas automaticamente, com bots configuráveis.
-          </li>
-          <li><strong>IBM Operational Decision Manager (ODM)</strong><br>
-            Gerencia regras de negócio e decisões automatizadas em tempo real.
-          </li>
-          <li><strong>IBM FileNet Content Manager</strong><br>
-            Gerencia documentos e conteúdos empresariais com segurança e compliance.
-          </li>
-          <li><strong>IBM Datacap</strong><br>
-            Captura e extrai dados automaticamente de documentos físicos e digitais.
-          </li>
-          <li><strong>IBM Automation Document Processing (ADP)</strong><br>
-            Captação inteligente de documentos com IA, NLP e reconhecimento visual.
-          </li>
-          <li><strong>IBM Process Mining</strong><br>
-            Identifica gargalos, ineficiências e oportunidades de automação com base em dados reais de execução.
-          </li>
-          <li><strong>IBM Business Automation Insights</strong><br>
-            Plataforma de métricas, analytics e KPIs em tempo real para processos automatizados.
-          </li>
-          <li><strong>IBM Automation Workstream Services</strong><br>
-            Ferramenta de criação rápida de workflows com interface low-code/no-code.
-          </li>
-          <li><strong>IBM Watson Orchestrate</strong><br>
-            Agente de IA que executa fluxos de trabalho empresariais usando linguagem natural, integrado com ferramentas como Slack, Salesforce e Workday.
-          </li>
-          <li><strong>IBM Content Services</strong><br>
-            Inclui recursos de ECM (Enterprise Content Management) e serviços cognitivos para lidar com conteúdo não estruturado.
-          </li>
-          <li><strong>IBM Instana + IBM Turbonomic (apoio à automação com observabilidade e desempenho)</strong><br>
-            São usados para garantir que os processos automatizados sejam resilientes, performáticos e com alocação ideal de recursos.
-          </li>
-          <li><strong>IBM watsonx.ai + watsonx Orchestrate (Integração com IA generativa)</strong><br>
-            Capacita automações com linguagem natural, geração de conteúdo, análise de documentos e decisões contextuais com LLMs.
-          </li>
-        </ul>
-      </div>
-
-      <!-- SOLUÇÃO DE SEGURANÇA -->
-      <div class="solucao">
-        <span class="tag">Segurança</span>
-        <h2>Solução de Segurança</h2>
-        <ul>
-          <li><strong>Gestão de Identidade e Acesso (IAM)</strong>
-            <ul>
-              <li>IBM Security Verify (SaaS e on-prem): Autenticação, SSO, MFA, gerenciamento de acesso.</li>
-              <li>IBM Security Verify Governance: Governança de identidade e conformidade regulatória.</li>
-              <li>IBM Security Identity Manager: Plataforma tradicional de IAM (legado, ainda disponível para clientes existentes).</li>
-            </ul>
-          </li>
-          <li><strong>Governança de Dados e Proteção de Informações</strong>
-            <ul>
-              <li><strong>IBM Guardium:</strong>
-                <ul>
-                  <li>Guardium Data Protection: Monitoramento e auditoria de dados em bases relacionais e noSQL.</li>
-                  <li>Guardium Insights: Análise forense e compliance com suporte a multicloud e IA.</li>
-                  <li>Guardium Vulnerability Assessment: Análise de vulnerabilidades em bases de dados.</li>
-                </ul>
-              </li>
-              <li>IBM Security Discover and Classify: Descoberta automática de dados sensíveis e mapeamento de fluxo de dados.</li>
-            </ul>
-          </li>
-          <li><strong>Governança, Risco e Conformidade (GRC)</strong>
-            <ul>
-              <li>IBM OpenPages with Watson: Plataforma integrada para gerenciamento de riscos corporativos, conformidade regulatória, auditoria, riscos de TI e continuidade de negócios.</li>
-            </ul>
-          </li>
-          <li><strong>Segurança em Nuvem e Multicloud</strong>
-            <ul>
-              <li>IBM Cloud Security & Compliance Center: Conformidade automatizada em ambientes híbridos e multicloud (incluindo AWS, Azure, GCP).</li>
-              <li>IBM Key Protect: Gerenciamento seguro de chaves criptográficas em HSM na IBM Cloud.</li>
-              <li>IBM Cloud Hyper Protect Crypto Services: Proteção de chaves e dados com hardware FIPS 140-2 nível 4.</li>
-            </ul>
-          </li>
-          <li><strong>Segurança de APIs e Aplicações</strong>
-            <ul>
-              <li>IBM API Connect + DataPower Gateway: Proteção de APIs, controle de tráfego, autenticação OAuth2, criptografia e rate-limiting.</li>
-              <li>IBM Application Gateway (IAG): Proxy de segurança para acesso seguro a aplicações legadas (SAP, web apps, etc.) com autenticação moderna e MFA.</li>
-            </ul>
-          </li>
-          <li><strong>Inteligência de Ameaças e Serviços Gerenciados</strong>
-            <ul>
-              <li>IBM X-Force Threat Intelligence Services: Feeds de ameaças, indicadores de comprometimento (IOC), análises de malware e suporte a resposta.</li>
-              <li>IBM X-Force Red: Serviços de Red Team (testes de penetração, engenharia social, simulação de adversário).</li>
-            </ul>
-          </li>
-          <li><strong>Outros Recursos Estratégicos</strong>
-            <ul>
-              <li>IBM Cloud Pak for Security (versão pós-venda de QRadar): Permanece como plataforma unificadora, conectando ferramentas multivendor com automação e federated search.</li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-
-      <!-- SOLUÇÕES EM NUVEM -->
-      <div class="solucao">
-        <span class="tag">Nuvem</span>
-        <h2>Soluções em Nuvem</h2>
-        <ul>
-          <li><strong>Security (Segurança)</strong>
-            <ul>
-              <li>Ansible Vault Platform</li>
-              <li>Ansible Vault Services for IBM Cloud</li>
-              <li>App ID</li>
-              <li>Cloud Internet Services - WAF</li>
-              <li>Cloud Internet Services - Security</li>
-              <li>Cloud Security and Compliance Center</li>
-              <li>Container Security</li>
-              <li>Data Security Broker</li>
-              <li>Data Security Broker with Guardium</li>
-              <li>Data Security Broker with F5</li>
-              <li>Data Security Broker with Palo Alto</li>
-              <li>IBM Cloud IAM</li>
-              <li>IBM Cloud Key Protect</li>
-              <li>IBM Cloud Secrets Manager</li>
-              <li>IBM Cloud Hyper Protect Crypto Services</li>
-              <li>IBM Cloud Hyper Protect Virtual Servers</li>
-              <li>IBM Cloud App ID</li>
-              <li>IBM Cloud Activity Tracker</li>
-              <li>IBM Cloud Identity and Access</li>
-              <li>IBM Cloud Internet Services</li>
-              <li>IBM Cloud Network Security</li>
-              <li>IBM Cloud Network Security Cluster</li>
-              <li>IBM Cloud VPC Flow Logs</li>
-              <li>IBM Key Protect</li>
-              <li>IBM Secrets Manager</li>
-              <li>IBM VPC Security Management</li>
-              <li>Managed Network Security Services</li>
-              <li>Persona Cloud Compute Edition - BYOL</li>
-              <li>Secrets Manager</li>
-              <li>VPC Flow Logs</li>
-              <li>VPC Network ACLs</li>
-            </ul>
-          </li>
-          <li><strong>Compute (Computação)</strong>
-            <ul>
-              <li>Bare Metal Servers for Classic</li>
-              <li>Bare Metal Servers for VPC</li>
-              <li>Bare Metal Servers for x86</li>
-              <li>Virtual Servers for Classic</li>
-              <li>Virtual Servers for VPC</li>
-              <li>x86 Virtual Servers</li>
-              <li>Power Systems Virtual Server</li>
-              <li>SAP HANA Bare Metal</li>
-              <li>VMware Solutions</li>
-              <li>Red Hat OpenShift</li>
-              <li>Virtual Server for Classic</li>
-              <li>Virtual Server for VPC</li>
-              <li>GoldenEye Cluster Proxy Module</li>
-              <li>GoldenEye Containers Patch Module</li>
-              <li>GoldenEye Kubernetes Patch Module</li>
-              <li>GoldenEye Integration for 3-tier MZR</li>
-              <li>GoldenEye Integration for 3-tier SAZ</li>
-              <li>OpenShift</li>
-              <li>Qiskit Runtime</li>
-            </ul>
-          </li>
-          <li><strong>AI / Machine Learning</strong>
-            <ul>
-              <li>Annotator for Clinical Data</li>
-              <li>AutoAI</li>
-              <li>Data Refinery</li>
-              <li>Deep Learning</li>
-              <li>Deep Learning as a Service</li>
-              <li>Knowledge Studio</li>
-              <li>Machine Learning</li>
-              <li>Model Asset Exchange</li>
-              <li>Natural Language Classifier</li>
-              <li>Natural Language Understanding</li>
-              <li>NeuralSeek</li>
-              <li>OpenScale</li>
-              <li>SPSS Modeler</li>
-              <li>Speech to Text</li>
-              <li>Text to Speech</li>
-              <li>Watson Assistant</li>
-              <li>Watson Discovery</li>
-              <li>Watson Knowledge Catalog</li>
-              <li>Watson Machine Learning</li>
-              <li>Watson OpenScale</li>
-              <li>Watson Studio</li>
-            </ul>
-          </li>
-          <li><strong>Analytics</strong>
-            <ul>
-              <li>Analytics Engine</li>
-              <li>Cloud Pak for Data</li>
-              <li>Cognos Dashboard Embedded</li>
-              <li>Dashboards</li>
-              <li>Data Refinery</li>
-              <li>Streaming Analytics</li>
-              <li>Watson Analytics</li>
-              <li>Watson Analytics Resource Management</li>
-              <li>Watson Analytics Bundles</li>
-            </ul>
-          </li>
-          <li><strong>Dev Tools</strong>
-            <ul>
-              <li>App Configuration</li>
-              <li>Event Notifications</li>
-              <li>Continuous Delivery</li>
-              <li>Code Engine</li>
-              <li>IBM Cloud Toolchain</li>
-              <li>IBM Cloud DevOps</li>
-              <li>DevOps Insights</li>
-              <li>Red Hat OpenShift Dev Tools</li>
-              <li>Gitea</li>
-              <li>Tekton</li>
-              <li>Jenkins</li>
-              <li>GitHub</li>
-              <li>Web IDE</li>
-              <li>Code Patterns</li>
-              <li>GitHub Repos</li>
-              <li>App Management</li>
-              <li>WebSphere Application Server</li>
-            </ul>
-          </li>
-          <li><strong>Storage</strong>
-            <ul>
-              <li>Block Storage</li>
-              <li>Cloud Object Storage</li>
-              <li>File Storage</li>
-              <li>Persistent Volume for VPC</li>
-              <li>Persistent Volume for Kubernetes</li>
-              <li>Backup for VPC</li>
-              <li>Cloud Backup</li>
-              <li>Cloud Object Archive</li>
-              <li>Cloud Pak Migration</li>
-              <li>MS365 Backup as a Service</li>
-              <li>Spectrum Protect</li>
-            </ul>
-          </li>
-          <li><strong>Databases</strong>
-            <ul>
-              <li>Cloudant</li>
-              <li>Databases for DataStax</li>
-              <li>Databases for MongoDB</li>
-              <li>Databases for PostgreSQL</li>
-              <li>Databases for Redis</li>
-              <li>Databases for Elasticsearch</li>
-              <li>Databases for MySQL</li>
-              <li>Db2</li>
-              <li>Db2 Warehouse</li>
-              <li>Event Streams</li>
-              <li>Hyper Protect DBaaS</li>
-              <li>IBM Db2 on Cloud</li>
-              <li>IBM Informix</li>
-              <li>IBM Watson Query</li>
-              <li>PostgreSQL (SQL Query)</li>
-              <li>SQL Query</li>
-              <li>Watsonx.data</li>
-              <li>Watson Query</li>
-            </ul>
-          </li>
-          <li><strong>Integration</strong>
-            <ul>
-              <li>API Connect</li>
-              <li>App Connect</li>
-              <li>Cloud Pak for Integration</li>
-              <li>DataStage</li>
-              <li>Event Streams</li>
-              <li>IBM MQ</li>
-              <li>IBM MQ on Cloud</li>
-              <li>Secure Gateway</li>
-              <li>HyperAutomation</li>
-              <li>Robotic Process Automation</li>
-              <li>Process Mining</li>
-              <li>Process Server</li>
-              <li>Enterprise Service Bus (ESB)</li>
-            </ul>
-          </li>
-          <li><strong>Migration</strong>
-            <ul>
-              <li>Custom Migrations as a Service</li>
-              <li>Data Virtualization</li>
-              <li>IBM Hyper Protect Virtual Server</li>
-              <li>IBM Power Systems Virtual Servers</li>
-              <li>IBM Spectrum Virtualize for Public Cloud</li>
-              <li>IBM Storage Protect</li>
-              <li>IBM VPC Migration</li>
-              <li>Live Migration</li>
-              <li>Zerto Migration</li>
-              <li>Backend Migration - BYOL</li>
-            </ul>
-          </li>
-          <li><strong>Containers</strong>
-            <ul>
-              <li>Code Engine</li>
-              <li>Container Registry</li>
-              <li>IBM Cloud Kubernetes Service</li>
-              <li>IBM Cloud Red Hat OpenShift</li>
-              <li>OpenShift Dedicated</li>
-              <li>Red Hat OpenShift on IBM Cloud</li>
-              <li>VPC Infrastructure</li>
-              <li>Virtual Server for VPC</li>
-              <li>VPC DRaaS (Disaster Recovery as a Service)</li>
-            </ul>
-          </li>
-          <li><strong>Networking</strong>
-            <ul>
-              <li>Client VPN for VPC</li>
-              <li>Direct Link</li>
-              <li>DNS Services</li>
-              <li>F5 Container Ingress Services</li>
-              <li>F5 Container Ingress WAF</li>
-              <li>F5 Container Ingress SSL Termination</li>
-              <li>F5 Container Ingress Services Operator</li>
-              <li>IBM Cloud App Connect Gateway</li>
-              <li>IBM Cloud Application Load Balancer</li>
-              <li>IBM Cloud Classic DNS</li>
-              <li>IBM Cloud Direct Link on Classic</li>
-              <li>IBM Cloud Direct Link Dedicated</li>
-              <li>IBM Cloud DNS Services</li>
-              <li>IBM Cloud Global Load Balancer</li>
-              <li>IBM Cloud Load Balancer</li>
-              <li>IBM Cloud Internet Services (CIS)</li>
-              <li>IBM Cloud Internet Services NS1</li>
-              <li>IBM Cloud IP Spoofing</li>
-              <li>IBM Cloud VPC Flow Logs</li>
-              <li>Juniper SSR (Session Smart Router / 128T)</li>
-              <li>Load Balancers for Classic</li>
-              <li>Public Gateway for VPC</li>
-              <li>Transit Gateway</li>
-              <li>VPN Classic</li>
-              <li>VPN Gateway</li>
-              <li>VPC</li>
-              <li>VPC DNS Resolution</li>
-              <li>VPC Network ACLs</li>
-              <li>z Zones VPC</li>
-            </ul>
-          </li>
-          <li><strong>Logging and Monitoring</strong>
-            <ul>
-              <li>IBM Cloud Activity Tracker</li>
-              <li>IBM Cloud Monitoring</li>
-              <li>IBM Cloud Monitoring Agent</li>
-              <li>IBM Cloud Observability</li>
-              <li>IBM Cloud Observability Insights</li>
-              <li>Instana</li>
-              <li>Sysdig</li>
-            </ul>
-          </li>
-          <li><strong>Internet of Things (IoT)</strong>
-            <ul>
-              <li>IoT Platform</li>
-              <li>IoT Real-Time Data Services</li>
-            </ul>
-          </li>
-          <li><strong>Blockchain</strong>
-            <ul>
-              <li>Blockchain Platform</li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-
-      <!-- SOLUÇÕES DE STORAGE -->
-      <div class="solucao">
-        <span class="tag">Storage</span>
-        <h2>Soluções de Storage</h2>
-        <ul>
-          <li><strong>IBM FlashSystem</strong><br>
-            Armazenamento em flash de alta performance, com baixa latência e compressão inline.<br>
-            Proteção com IBM Safeguarded Copy e IBM FlashCore Modules.<br>
-            Suporte a multicloud, containers (Red Hat OpenShift) e virtualização.
-          </li>
-          <li><strong>IBM Storage Fusion</strong><br>
-            Plataforma de armazenamento para containers e ambientes Kubernetes.<br>
-            Integrada ao Red Hat OpenShift com provisionamento automático, snapshots e mobilidade de dados.
-          </li>
-          <li><strong>IBM Storage Ceph</strong><br>
-            Solução Software Defined Storage (SDS) para blocos, arquivos e objetos.<br>
-            Baseada em código aberto (Ceph), ideal para ambientes escaláveis, cloud-native e workloads de IA.
-          </li>
-          <li><strong>IBM Storage Scale (antigo Spectrum Scale)</strong><br>
-            Sistema de arquivos paralelos para dados não estruturados em escala massiva.<br>
-            Suporte a HPC, IA, análise avançada e bancos de dados distribuídos.
-          </li>
-          <li><strong>IBM Cloud Object Storage</strong><br>
-            Armazenamento de objetos escalável, durável e seguro, disponível on-premises e em cloud.<br>
-            Ideal para backup, arquivamento, big data, repositórios de IA e dados não estruturados.
-          </li>
-          <li><strong>IBM Storage Defender (novo lançamento em 2024/2025)</strong><br>
-            Plataforma integrada para resiliência cibernética, backup, recuperação e proteção de dados contra ransomware.
-          </li>
-          <li><strong>IBM Spectrum Protect</strong><br>
-            Solução tradicional de backup e recuperação, com suporte a ambientes físicos, virtuais e em nuvem.<br>
-            Suporte avançado a deduplicação, automação e escalabilidade.
-          </li>
-          <li><strong>IBM Storage Insights</strong><br>
-            Ferramenta SaaS para monitoramento, análise e otimização do ambiente de storage IBM.<br>
-            Proativa, com alertas e recomendações baseadas em IA.
-          </li>
-          <li><strong>IBM Tape Storage (TS Series)</strong><br>
-            Soluções de fita magnética para arquivamento de longo prazo com baixíssimo custo e alta durabilidade.<br>
-            Compatível com LTO Ultrium e tecnologias WORM.
-          </li>
-        </ul>
-      </div>
-
-      <!-- IBM POWER SYSTEMS BARE METAL NA IBM CLOUD -->
-      <div class="solucao">
-        <span class="tag">Power Systems</span>
-        <h2>IBM Power Systems Bare Metal na IBM Cloud</h2>
-        <ul>
-          <li><strong>IBM Power Systems Virtual Server (dedicado físico por partição)</strong><br>
-            Infraestrutura Power9 ou Power10, com partições lógicas (LPARs) sob seu controle.<br>
-            Baseado em hardware físico real (não emulação x86).<br>
-            Opção de uso dedicado (bare metal compartilhado entre suas próprias LPARs).
-          </li>
-          <li><strong>Sistemas operacionais suportados</strong>
-            <ul>
-              <li>IBM AIX</li>
-              <li>IBM i (AS/400)</li>
-              <li>Linux on Power (RHEL, SUSE)</li>
-            </ul>
-          </li>
-          <li><strong>Recursos técnicos</strong>
-            <ul>
-              <li>CPU: POWER9 ou POWER10</li>
-              <li>Suporte a VIOS (Virtual I/O Server), NIM, HMC virtual</li>
-              <li>Conectividade com serviços IBM Cloud via VPC ou Classic Infrastructure</li>
-              <li>Suporte a backup, snapshot e replicação</li>
-              <li>Integração com serviços como IBM Cloud Object Storage, Block Storage, e Spectrum Protect</li>
-            </ul>
-          </li>
-          <li><strong>Casos de uso típicos</strong>
-            <ul>
-              <li>Modernização de workloads legados em AIX e IBM i</li>
-              <li>Bancos de dados Db2, Oracle, SAP on AIX</li>
-              <li>Aplicações ERP críticas</li>
-              <li>Ambientes híbridos com IBM Power e x86</li>
-            </ul>
-          </li>
-          <li><strong>Diferenciais da oferta Power na IBM Cloud</strong>
-            <ul>
-              <li>Total controle sobre a infraestrutura (como on-premise)</li>
-              <li>Evita refatoração de código legado (AIX, IBM i)</li>
-              <li>Pode ser integrado ao restante da IBM Cloud (Kubernetes, Watsonx, etc.)</li>
-              <li>Preço por hora ou mensal com escalabilidade</li>
-            </ul>
-          </li>
-        </ul>
-      </div>
+    
+    <h1 class="avatar-title">COE Isis</h1>
+    <p class="coe-subtitle">The Intelligent Voice of TD SYNNEX Center of Excellence</p>
+    
+    <div class="avatar-container">
+        <div class="avatar-frame">
+            <iframe 
+                class="heygen-embed"
+                src="https://labs.heygen.com/guest/streaming-embed?share=eyJxdWFsaXR5IjoiaGlnaCIsImF2YXRhck5hbWUiOiJLYXR5YV9Qcm9mZXNzaW9uYWxMb29rX3B1YmxpYyIsInByZXZpZXdJbWciOiJodHRwczovL2ZpbGVzMi5oZXlnZW4uYWkvYXZhdGFyL3YzLzM0OGRkZjUwM2M2NTRiOWJiYmI4YmVhOWY5MjEwZWFkXzU1ODcwL3ByZXZpZXdfdGFyZ2V0LndlYnAiLCJuZWVkUmVtb3ZlQmFja2dyb3VuZCI6dHJ1ZSwia25vd2xlZGdlQmFzZUlkIjoiNTM5MDc4YTI5ZjUzNDRiODhhZjE5MGFlZWE4ODQ0OWMiLCJ1c2VybmFtZSI6Ijg4OWFlZDhiN2IxMzQ3ODNiOWE3OWU5ZmZhMDY3NTM4In0%3D"
+                allowfullscreen
+                allow="microphone"
+                title="COE Isis - TD SYNNEX Center of Excellence"
+            ></iframe>
+        </div>
+        
+        <div class="brand-footer">
+            <div class="brand-name">TDSYNNEX</div>
+        </div>
     </div>
-
-    <!-- ENGLISH -->
-    <div id="en-content" style="display:none;">
-      <!-- DATA SOLUTIONS -->
-      <div class="solucao">
-        <span class="tag">Data</span>
-        <h2>Data Solutions</h2>
-        <ul>
-          <li><strong>Data Fabric</strong><br>
-            Integrates all corporate data and optimizes how it flows through systems, ensuring analytical scalability and protection.
-          </li>
-          <li><strong>watsonx.data</strong><br>
-            Lakehouse data platform optimized for AI workloads, based on Presto, with governance and federated access support.
-          </li>
-          <li><strong>Data Intelligence</strong><br>
-            Promotes intelligence about data and metadata focusing on reuse, quality, and traceability.
-          </li>
-          <li><strong>Data Product Hub</strong><br>
-            Enables the creation, management, and sharing of reusable data products, with version control and access policies.
-          </li>
-          <li><strong>Knowledge Catalog</strong><br>
-            Enterprise data catalog with business glossary features, automated classification, data quality, and AI integration.
-          </li>
-          <li><strong>Manta Data Lineage</strong><br>
-            Automatically tracks the origin and destination of data in pipelines and applications, allowing visibility and impact of changes.
-          </li>
-          <li><strong>Data Integration</strong><br>
-            Set of tools for ingestion, transformation, and orchestration of data in batch and streaming.
-          </li>
-          <li><strong>DataStage</strong><br>
-            ETL integration tool with visual design and parallelism, used to prepare and move data between various sources.
-          </li>
-          <li><strong>Databand</strong><br>
-            Data observability platform that detects and alerts about failures, delays, or degradation in pipeline execution.
-          </li>
-          <li><strong>StreamSets</strong><br>
-            Tool for continuous data integration in motion (streaming), supporting multiple formats and destinations.
-          </li>
-          <li><strong>Data Security</strong><br>
-            Manages and protects sensitive data in compliance with regulatory standards.
-          </li>
-          <li><strong>Guardium Data Security Center</strong><br>
-            Centralized platform for discovering sensitive data, applying policies, masking, encryption, and auditing.
-          </li>
-          <li><strong>Data Storage</strong><br>
-            Software-defined storage, scalable and resilient, for hybrid and multicloud environments.
-          </li>
-          <li><strong>Storage Ceph</strong><br>
-            Block, file, and object storage solution based on open-source software, suitable for distributed and cloud-native environments.
-          </li>
-        </ul>
-      </div>
-
-      <!-- AI SOLUTIONS -->
-      <div class="solucao">
-        <span class="tag">Artificial Intelligence</span>
-        <h2>AI Solutions</h2>
-        <ul>
-          <li><strong>AI Productivity</strong><br>
-            AI assistants for corporate productivity:
-            <ul>
-              <li><strong>watsonx Code Assistant</strong><br>
-                Automatically generates code (e.g., COBOL, YAML, Ansible), accelerating development and modernization of legacy applications.
-              </li>
-              <li><strong>watsonx Orchestrate</strong><br>
-                Executes corporate tasks with AI based on natural language. Acts as an intelligent agent connected to APIs and systems like Slack, Workday, Salesforce, etc.
-              </li>
-              <li><strong>Planning Analytics</strong><br>
-                Tool for financial planning, budgeting, and predictive modeling, with real-time analysis and AI support.
-              </li>
-            </ul>
-          </li>
-          <li><strong>AI/ML Ops</strong><br>
-            Models, tools, and governance for safe and scalable use of AI:
-            <ul>
-              <li><strong>AI Models</strong>
-                <ul>
-                  <li><strong>Granite</strong><br>
-                    IBM's proprietary foundational models trained for text generation, classification, summarization, and Q&A with a corporate focus.
-                  </li>
-                  <li><strong>Meta Llama</strong><br>
-                    Open-source models developed by Meta, used by IBM in generative AI environments with a focus on flexibility.
-                  </li>
-                  <li><strong>Mistral</strong><br>
-                    Compact and efficient open-source LLM models optimized for execution in low-latency corporate environments.
-                  </li>
-                </ul>
-              </li>
-              <li><strong>AI Tools</strong>
-                <ul>
-                  <li><strong>watsonx.ai</strong><br>
-                    Platform for training, fine-tuning, deploying, and inferring generative AI and machine learning models.
-                  </li>
-                </ul>
-              </li>
-              <li><strong>AI Governance</strong>
-                <ul>
-                  <li><strong>watsonx.governance</strong><br>
-                    Ensures explainability, traceability, risk management, and regulatory compliance of AI models used in production.
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-
-      <!-- APPLICATION DEVELOPMENT AND INTEGRATION -->
-      <div class="solucao">
-        <span class="tag">Development and Integration</span>
-        <h2>Application Development and Integration</h2>
-        <ul>
-          <li><strong>Application Development</strong>
-            <ul>
-              <li><strong>Enterprise Application Service for Java</strong><br>
-                Development and execution platform for Java applications in corporate environments, with modernization support.
-              </li>
-            </ul>
-          </li>
-          <li><strong>Application Integration</strong>
-            <ul>
-              <li><strong>Hybrid iPaaS</strong><br>
-                Integration platform as a service to connect applications and data in hybrid and multicloud environments.
-              </li>
-              <li><strong>API Connect</strong><br>
-                API management platform that allows creating, securing, publishing, analyzing, and monetizing APIs with security and governance.
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-
-      <!-- INFRASTRUCTURE AUTOMATION -->
-      <div class="solucao">
-        <span class="tag">Infrastructure Automation</span>
-        <h2>Infrastructure Automation Solution</h2>
-        <ul>
-          <li><strong>Infrastructure Lifecycle Management</strong>
-            <ul>
-              <li><strong>Terraform</strong><br>
-                Infrastructure as code (IaC) tool for automated resource provisioning and management.
-              </li>
-              <li><strong>Consul</strong><br>
-                Service discovery and distributed configuration system for microservices.
-              </li>
-              <li><strong>Nomad</strong><br>
-                Lightweight orchestrator for running workloads in containers, VMs, or bare-metal.
-              </li>
-              <li><strong>Vault</strong><br>
-                Secure secrets management and encryption to protect sensitive data.<br>
-                <em>Note: All the above products are from HashiCorp (pending acquisition by IBM).</em>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-
-      <!-- IDENTITY & ACCESS MANAGEMENT -->
-      <div class="solucao">
-        <span class="tag">Identity & Access</span>
-        <h2>Identity & Access Management</h2>
-        <ul>
-          <li><strong>Verify</strong><br>
-            Identity management and authentication solution with MFA, SSO, and risk-based access policies.
-          </li>
-          <li><strong>IBM Security Verify (SaaS and on-prem)</strong><br>
-            Authentication, SSO, MFA, access management.
-          </li>
-          <li><strong>IBM Security Verify Governance</strong><br>
-            Identity governance and regulatory compliance.
-          </li>
-          <li><strong>IBM Security Identity Manager</strong><br>
-            Traditional IAM platform (legacy, still available for existing customers).
-          </li>
-        </ul>
-      </div>
-
-      <!-- NETWORK MANAGEMENT -->
-      <div class="solucao">
-        <span class="tag">Network Management</span>
-        <h2>Network Management</h2>
-        <ul>
-          <li><strong>NS1</strong><br>
-            Intelligent DNS traffic management to ensure application performance and resilience.
-          </li>
-          <li><strong>NS1®</strong><br>
-            Complementary solution for traffic routing based on advanced policies.
-          </li>
-          <li><strong>Hybrid Cloud Mesh</strong><br>
-            Secure network mesh for connecting distributed applications in multicloud environments.
-          </li>
-          <li><strong>SevOne NPM</strong><br>
-            Network monitoring platform with performance analysis and advanced visualization.
-          </li>
-          <li><strong>Rapid Network Automation</strong><br>
-            Network automation focused on operational agility and dynamic provisioning.
-          </li>
-        </ul>
-      </div>
-
-      <!-- OBSERVABILITY -->
-      <div class="solucao">
-        <span class="tag">Observability</span>
-        <h2>Observability</h2>
-        <ul>
-          <li><strong>Instana</strong><br>
-            AI-based observability platform with real-time distributed tracing, metrics, and logs.
-          </li>
-          <li><strong>Turbonomic</strong><br>
-            Intelligent automation of IT resources (CPU, memory, storage) based on demand analysis.
-          </li>
-          <li><strong>Concert</strong><br>
-            Reliability automation focused on end-user experience and change orchestration.
-          </li>
-        </ul>
-      </div>
-
-      <!-- FINOPS -->
-      <div class="solucao">
-        <span class="tag">FinOps</span>
-        <h2>FinOps & IT Financial Management</h2>
-        <ul>
-          <li><strong>Cloudability</strong><br>
-            Multicloud cost management platform, focusing on allocation, optimization, and spending governance.
-          </li>
-          <li><strong>Kubecost</strong><br>
-            Cost visibility tool in Kubernetes environments, with recommendations for reducing expenses.
-          </li>
-          <li><strong>Apptio</strong><br>
-            IT financial management (TBM), with cost allocation, ROI, and data-driven decision support.
-          </li>
-          <li><strong>Targetprocess</strong><br>
-            Agile portfolio solution that connects strategy, execution, and budgeting in real time.
-          </li>
-        </ul>
-      </div>
-
-      <!-- ASSET LIFECYCLE, ESG, ENVIRONMENTAL INTELLIGENCE -->
-      <div class="solucao">
-        <span class="tag">Assets, ESG, and Sustainability</span>
-        <h2>Asset Lifecycle, ESG, Environmental Intelligence</h2>
-        <ul>
-          <li><strong>Maximo Application Suite</strong><br>
-            Complete management of the lifecycle of physical assets, maintenance, inspections, and industrial operations.
-          </li>
-          <li><strong>Envizi ESG Suite</strong><br>
-            Platform for managing ESG indicators, sustainability, and compliance reporting.
-          </li>
-          <li><strong>Environmental Intelligence</strong><br>
-            Analytical tool for environmental risks, climate forecasting, and sustainable planning.
-          </li>
-        </ul>
-      </div>
-
-      <!-- IBM CLOUD PAK FOR BUSINESS AUTOMATION -->
-      <div class="solucao">
-        <span class="tag">Business Automation</span>
-        <h2>IBM Cloud Pak for Business Automation Solution</h2>
-        <ul>
-          <li><strong>IBM Business Automation Workflow (BAW)</strong><br>
-            Automates workflows of human and system processes.
-          </li>
-          <li><strong>IBM Robotic Process Automation (RPA)</strong><br>
-            Automatically executes repetitive tasks, with configurable bots.
-          </li>
-          <li><strong>IBM Operational Decision Manager (ODM)</strong><br>
-            Manages business rules and automated decisions in real time.
-          </li>
-          <li><strong>IBM FileNet Content Manager</strong><br>
-            Manages documents and enterprise content with security and compliance.
-          </li>
-          <li><strong>IBM Datacap</strong><br>
-            Automatically captures and extracts data from physical and digital documents.
-          </li>
-          <li><strong>IBM Automation Document Processing (ADP)</strong><br>
-            Intelligent document capture with AI, NLP, and visual recognition.
-          </li>
-          <li><strong>IBM Process Mining</strong><br>
-            Identifies bottlenecks, inefficiencies, and automation opportunities based on real execution data.
-          </li>
-          <li><strong>IBM Business Automation Insights</strong><br>
-            Platform for metrics, analytics, and real-time KPIs for automated processes.
-          </li>
-          <li><strong>IBM Automation Workstream Services</strong><br>
-            Rapid workflow creation tool with a low-code/no-code interface.
-          </li>
-          <li><strong>IBM Watson Orchestrate</strong><br>
-            AI agent that executes business workflows using natural language, integrated with tools like Slack, Salesforce, and Workday.
-          </li>
-          <li><strong>IBM Content Services</strong><br>
-            Includes ECM (Enterprise Content Management) features and cognitive services to handle unstructured content.
-          </li>
-          <li><strong>IBM Instana + IBM Turbonomic (support for automation with observability and performance)</strong><br>
-            Used to ensure that automated processes are resilient, performant, and optimally allocated resources.
-          </li>
-          <li><strong>IBM watsonx.ai + watsonx Orchestrate (Integration with generative AI)</strong><br>
-            Empowers automations with natural language, content generation, document analysis, and contextual decisions with LLMs.
-          </li>
-        </ul>
-      </div>
-
-      <!-- SECURITY SOLUTION -->
-      <div class="solucao">
-        <span class="tag">Security</span>
-        <h2>Security Solution</h2>
-        <ul>
-          <li><strong>Identity and Access Management (IAM)</strong>
-            <ul>
-              <li>IBM Security Verify (SaaS and on-prem): Authentication, SSO, MFA, access management.</li>
-              <li>IBM Security Verify Governance: Identity governance and regulatory compliance.</li>
-              <li>IBM Security Identity Manager: Traditional IAM platform (legacy, still available for existing customers).</li>
-            </ul>
-          </li>
-          <li><strong>Data Governance and Information Protection</strong>
-            <ul>
-              <li><strong>IBM Guardium:</strong>
-                <ul>
-                  <li>Guardium Data Protection: Monitoring and auditing of data in relational and noSQL databases.</li>
-                  <li>Guardium Insights: Forensic analysis and compliance with multicloud and AI support.</li>
-                  <li>Guardium Vulnerability Assessment: Vulnerability analysis in databases.</li>
-                </ul>
-              </li>
-              <li>IBM Security Discover and Classify: Automatic discovery of sensitive data and data flow mapping.</li>
-            </ul>
-          </li>
-          <li><strong>Governance, Risk, and Compliance (GRC)</strong>
-            <ul>
-              <li>IBM OpenPages with Watson: Integrated platform for corporate risk management, regulatory compliance, auditing, IT risks, and business continuity.</li>
-            </ul>
-          </li>
-          <li><strong>Cloud and Multicloud Security</strong>
-            <ul>
-              <li>IBM Cloud Security & Compliance Center: Automated compliance in hybrid and multicloud environments (including AWS, Azure, GCP).</li>
-              <li>IBM Key Protect: Secure management of cryptographic keys in HSM in IBM Cloud.</li>
-              <li>IBM Cloud Hyper Protect Crypto Services: Protection of keys and data with FIPS 140-2 level 4 hardware.</li>
-            </ul>
-          </li>
-          <li><strong>API and Application Security</strong>
-            <ul>
-              <li>IBM API Connect + DataPower Gateway: API protection, traffic control, OAuth2 authentication, encryption, and rate-limiting.</li>
-              <li>IBM Application Gateway (IAG): Security proxy for secure access to legacy applications (SAP, web apps, etc.) with modern authentication and MFA.</li>
-            </ul>
-          </li>
-          <li><strong>Threat Intelligence and Managed Services</strong>
-            <ul>
-              <li>IBM X-Force Threat Intelligence Services: Threat feeds, indicators of compromise (IOC), malware analysis, and response support.</li>
-              <li>IBM X-Force Red: Red Team services (penetration testing, social engineering, adversary simulation).</li>
-            </ul>
-          </li>
-          <li><strong>Other Strategic Resources</strong>
-            <ul>
-              <li>IBM Cloud Pak for Security (post-sale version of QRadar): Remains as a unifying platform, connecting multivendor tools with automation and federated search.</li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-
-      <!-- CLOUD SOLUTIONS -->
-      <div class="solucao">
-        <span class="tag">Cloud</span>
-        <h2>Cloud Solutions</h2>
-        <ul>
-          <li><strong>Security</strong>
-            <ul>
-              <li>Ansible Vault Platform</li>
-              <li>Ansible Vault Services for IBM Cloud</li>
-              <li>App ID</li>
-              <li>Cloud Internet Services - WAF</li>
-              <li>Cloud Internet Services - Security</li>
-              <li>Cloud Security and Compliance Center</li>
-              <li>Container Security</li>
-              <li>Data Security Broker</li>
-              <li>Data Security Broker with Guardium</li>
-              <li>Data Security Broker with F5</li>
-              <li>Data Security Broker with Palo Alto</li>
-              <li>IBM Cloud IAM</li>
-              <li>IBM Cloud Key Protect</li>
-              <li>IBM Cloud Secrets Manager</li>
-              <li>IBM Cloud Hyper Protect Crypto Services</li>
-              <li>IBM Cloud Hyper Protect Virtual Servers</li>
-              <li>IBM Cloud App ID</li>
-              <li>IBM Cloud Activity Tracker</li>
-              <li>IBM Cloud Identity and Access</li>
-              <li>IBM Cloud Internet Services</li>
-              <li>IBM Cloud Network Security</li>
-              <li>IBM Cloud Network Security Cluster</li>
-              <li>IBM Cloud VPC Flow Logs</li>
-              <li>IBM Key Protect</li>
-              <li>IBM Secrets Manager</li>
-              <li>IBM VPC Security Management</li>
-              <li>Managed Network Security Services</li>
-              <li>Persona Cloud Compute Edition - BYOL</li>
-              <li>Secrets Manager</li>
-              <li>VPC Flow Logs</li>
-              <li>VPC Network ACLs</li>
-            </ul>
-          </li>
-          <li><strong>Compute</strong>
-            <ul>
-              <li>Bare Metal Servers for Classic</li>
-              <li>Bare Metal Servers for VPC</li>
-              <li>Bare Metal Servers for x86</li>
-              <li>Virtual Servers for Classic</li>
-              <li>Virtual Servers for VPC</li>
-              <li>x86 Virtual Servers</li>
-              <li>Power Systems Virtual Server</li>
-              <li>SAP HANA Bare Metal</li>
-              <li>VMware Solutions</li>
-              <li>Red Hat OpenShift</li>
-              <li>Virtual Server for Classic</li>
-              <li>Virtual Server for VPC</li>
-              <li>GoldenEye Cluster Proxy Module</li>
-              <li>GoldenEye Containers Patch Module</li>
-              <li>GoldenEye Kubernetes Patch Module</li>
-              <li>GoldenEye Integration for 3-tier MZR</li>
-              <li>GoldenEye Integration for 3-tier SAZ</li>
-              <li>OpenShift</li>
-              <li>Qiskit Runtime</li>
-            </ul>
-          </li>
-          <li><strong>AI / Machine Learning</strong>
-            <ul>
-              <li>Annotator for Clinical Data</li>
-              <li>AutoAI</li>
-              <li>Data Refinery</li>
-              <li>Deep Learning</li>
-              <li>Deep Learning as a Service</li>
-              <li>Knowledge Studio</li>
-              <li>Machine Learning</li>
-              <li>Model Asset Exchange</li>
-              <li>Natural Language Classifier</li>
-              <li>Natural Language Understanding</li>
-              <li>NeuralSeek</li>
-              <li>OpenScale</li>
-              <li>SPSS Modeler</li>
-              <li>Speech to Text</li>
-              <li>Text to Speech</li>
-              <li>Watson Assistant</li>
-              <li>Watson Discovery</li>
-              <li>Watson Knowledge Catalog</li>
-              <li>Watson Machine Learning</li>
-              <li>Watson OpenScale</li>
-              <li>Watson Studio</li>
-            </ul>
-          </li>
-          <li><strong>Analytics</strong>
-            <ul>
-              <li>Analytics Engine</li>
-              <li>Cloud Pak for Data</li>
-              <li>Cognos Dashboard Embedded</li>
-              <li>Dashboards</li>
-              <li>Data Refinery</li>
-              <li>Streaming Analytics</li>
-              <li>Watson Analytics</li>
-              <li>Watson Analytics Resource Management</li>
-              <li>Watson Analytics Bundles</li>
-            </ul>
-          </li>
-          <li><strong>Dev Tools</strong>
-            <ul>
-              <li>App Configuration</li>
-              <li>Event Notifications</li>
-              <li>Continuous Delivery</li>
-              <li>Code Engine</li>
-              <li>IBM Cloud Toolchain</li>
-              <li>IBM Cloud DevOps</li>
-              <li>DevOps Insights</li>
-              <li>Red Hat OpenShift Dev Tools</li>
-              <li>Gitea</li>
-              <li>Tekton</li>
-              <li>Jenkins</li>
-              <li>GitHub</li>
-              <li>Web IDE</li>
-              <li>Code Patterns</li>
-              <li>GitHub Repos</li>
-              <li>App Management</li>
-              <li>WebSphere Application Server</li>
-            </ul>
-          </li>
-          <li><strong>Storage</strong>
-            <ul>
-              <li>Block Storage</li>
-              <li>Cloud Object Storage</li>
-              <li>File Storage</li>
-              <li>Persistent Volume for VPC</li>
-              <li>Persistent Volume for Kubernetes</li>
-              <li>Backup for VPC</li>
-              <li>Cloud Backup</li>
-              <li>Cloud Object Archive</li>
-              <li>Cloud Pak Migration</li>
-              <li>MS365 Backup as a Service</li>
-              <li>Spectrum Protect</li>
-            </ul>
-          </li>
-          <li><strong>Databases</strong>
-            <ul>
-              <li>Cloudant</li>
-              <li>Databases for DataStax</li>
-              <li>Databases for MongoDB</li>
-              <li>Databases for PostgreSQL</li>
-              <li>Databases for Redis</li>
-              <li>Databases for Elasticsearch</li>
-              <li>Databases for MySQL</li>
-              <li>Db2</li>
-              <li>Db2 Warehouse</li>
-              <li>Event Streams</li>
-              <li>Hyper Protect DBaaS</li>
-              <li>IBM Db2 on Cloud</li>
-              <li>IBM Informix</li>
-              <li>IBM Watson Query</li>
-              <li>PostgreSQL (SQL Query)</li>
-              <li>SQL Query</li>
-              <li>Watsonx.data</li>
-              <li>Watson Query</li>
-            </ul>
-          </li>
-          <li><strong>Integration</strong>
-            <ul>
-              <li>API Connect</li>
-              <li>App Connect</li>
-              <li>Cloud Pak for Integration</li>
-              <li>DataStage</li>
-              <li>Event Streams</li>
-              <li>IBM MQ</li>
-              <li>IBM MQ on Cloud</li>
-              <li>Secure Gateway</li>
-              <li>HyperAutomation</li>
-              <li>Robotic Process Automation</li>
-              <li>Process Mining</li>
-              <li>Process Server</li>
-              <li>Enterprise Service Bus (ESB)</li>
-            </ul>
-          </li>
-          <li><strong>Migration</strong>
-            <ul>
-              <li>Custom Migrations as a Service</li>
-              <li>Data Virtualization</li>
-              <li>IBM Hyper Protect Virtual Server</li>
-              <li>IBM Power Systems Virtual Servers</li>
-              <li>IBM Spectrum Virtualize for Public Cloud</li>
-              <li>IBM Storage Protect</li>
-              <li>IBM VPC Migration</li>
-              <li>Live Migration</li>
-              <li>Zerto Migration</li>
-              <li>Backend Migration - BYOL</li>
-            </ul>
-          </li>
-          <li><strong>Containers</strong>
-            <ul>
-              <li>Code Engine</li>
-              <li>Container Registry</li>
-              <li>IBM Cloud Kubernetes Service</li>
-              <li>IBM Cloud Red Hat OpenShift</li>
-              <li>OpenShift Dedicated</li>
-              <li>Red Hat OpenShift on IBM Cloud</li>
-              <li>VPC Infrastructure</li>
-              <li>Virtual Server for VPC</li>
-              <li>VPC DRaaS (Disaster Recovery as a Service)</li>
-            </ul>
-          </li>
-          <li><strong>Networking</strong>
-            <ul>
-              <li>Client VPN for VPC</li>
-              <li>Direct Link</li>
-              <li>DNS Services</li>
-              <li>F5 Container Ingress Services</li>
-              <li>F5 Container Ingress WAF</li>
-              <li>F5 Container Ingress SSL Termination</li>
-              <li>F5 Container Ingress Services Operator</li>
-              <li>IBM Cloud App Connect Gateway</li>
-              <li>IBM Cloud Application Load Balancer</li>
-              <li>IBM Cloud Classic DNS</li>
-              <li>IBM Cloud Direct Link on Classic</li>
-              <li>IBM Cloud Direct Link Dedicated</li>
-              <li>IBM Cloud DNS Services</li>
-              <li>IBM Cloud Global Load Balancer</li>
-              <li>IBM Cloud Load Balancer</li>
-              <li>IBM Cloud Internet Services (CIS)</li>
-              <li>IBM Cloud Internet Services NS1</li>
-              <li>IBM Cloud IP Spoofing</li>
-              <li>IBM Cloud VPC Flow Logs</li>
-              <li>Juniper SSR (Session Smart Router / 128T)</li>
-              <li>Load Balancers for Classic</li>
-              <li>Public Gateway for VPC</li>
-              <li>Transit Gateway</li>
-              <li>VPN Classic</li>
-              <li>VPN Gateway</li>
-              <li>VPC</li>
-              <li>VPC DNS Resolution</li>
-              <li>VPC Network ACLs</li>
-              <li>z Zones VPC</li>
-            </ul>
-          </li>
-          <li><strong>Logging and Monitoring</strong>
-            <ul>
-              <li>IBM Cloud Activity Tracker</li>
-              <li>IBM Cloud Monitoring</li>
-              <li>IBM Cloud Monitoring Agent</li>
-              <li>IBM Cloud Observability</li>
-              <li>IBM Cloud Observability Insights</li>
-              <li>Instana</li>
-              <li>Sysdig</li>
-            </ul>
-          </li>
-          <li><strong>Internet of Things (IoT)</strong>
-            <ul>
-              <li>IoT Platform</li>
-              <li>IoT Real-Time Data Services</li>
-            </ul>
-          </li>
-          <li><strong>Blockchain</strong>
-            <ul>
-              <li>Blockchain Platform</li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-
-      <!-- STORAGE SOLUTIONS -->
-      <div class="solucao">
-        <span class="tag">Storage</span>
-        <h2>Storage Solutions</h2>
-        <ul>
-          <li><strong>IBM FlashSystem</strong><br>
-            High-performance flash storage, with low latency and inline compression.<br>
-            Protection with IBM Safeguarded Copy and IBM FlashCore Modules.<br>
-            Support for multicloud, containers (Red Hat OpenShift), and virtualization.
-          </li>
-          <li><strong>IBM Storage Fusion</strong><br>
-            Storage platform for containers and Kubernetes environments.<br>
-            Integrated with Red Hat OpenShift with automatic provisioning, snapshots, and data mobility.
-          </li>
-          <li><strong>IBM Storage Ceph</strong><br>
-            Software Defined Storage (SDS) solution for blocks, files, and objects.<br>
-            Based on open-source (Ceph), ideal for scalable, cloud-native environments and AI workloads.
-          </li>
-          <li><strong>IBM Storage Scale (formerly Spectrum Scale)</strong><br>
-            Parallel file system for unstructured data at massive scale.<br>
-            Support for HPC, AI, advanced analytics, and distributed databases.
-          </li>
-          <li><strong>IBM Cloud Object Storage</strong><br>
-            Scalable, durable, and secure object storage, available on-premises and in the cloud.<br>
-            Ideal for backup, archiving, big data, AI repositories, and unstructured data.
-          </li>
-          <li><strong>IBM Storage Defender (new release in 2024/2025)</strong><br>
-            Integrated platform for cyber resilience, backup, recovery, and protection against ransomware.
-          </li>
-          <li><strong>IBM Spectrum Protect</strong><br>
-            Traditional backup and recovery solution, supporting physical, virtual, and cloud environments.<br>
-            Advanced support for deduplication, automation, and scalability.
-          </li>
-          <li><strong>IBM Storage Insights</strong><br>
-            SaaS tool for monitoring, analyzing, and optimizing the IBM storage environment.<br>
-            Proactive, with alerts and AI-based recommendations.
-          </li>
-          <li><strong>IBM Tape Storage (TS Series)</strong><br>
-            Magnetic tape solutions for long-term archiving at very low cost and high durability.<br>
-            Compatible with LTO Ultrium and WORM technologies.
-          </li>
-        </ul>
-      </div>
-
-      <!-- IBM POWER SYSTEMS BARE METAL IN IBM CLOUD -->
-      <div class="solucao">
-        <span class="tag">Power Systems</span>
-        <h2>IBM Power Systems Bare Metal in IBM Cloud</h2>
-        <ul>
-          <li><strong>IBM Power Systems Virtual Server (dedicated physical by partition)</strong><br>
-            Power9 or Power10 infrastructure, with logical partitions (LPARs) under your control.<br>
-            Based on real physical hardware (not x86 emulation).<br>
-            Option for dedicated use (bare metal shared among your own LPARs).
-          </li>
-          <li><strong>Supported Operating Systems</strong>
-            <ul>
-              <li>IBM AIX</li>
-              <li>IBM i (AS/400)</li>
-              <li>Linux on Power (RHEL, SUSE)</li>
-            </ul>
-          </li>
-          <li><strong>Technical Features</strong>
-            <ul>
-              <li>CPU: POWER9 or POWER10</li>
-              <li>Support for VIOS (Virtual I/O Server), NIM, virtual HMC</li>
-              <li>Connectivity with IBM Cloud services via VPC or Classic Infrastructure</li>
-              <li>Support for backup, snapshot, and replication</li>
-              <li>Integration with services like IBM Cloud Object Storage, Block Storage, and Spectrum Protect</li>
-            </ul>
-          </li>
-          <li><strong>Typical Use Cases</strong>
-            <ul>
-              <li>Modernization of legacy workloads in AIX and IBM i</li>
-              <li>Db2, Oracle, SAP databases on AIX</li>
-              <li>Critical ERP applications</li>
-              <li>Hybrid environments with IBM Power and x86</li>
-            </ul>
-          </li>
-          <li><strong>Power Offer Differentiators in IBM Cloud</strong>
-            <ul>
-              <li>Total control over infrastructure (like on-premise)</li>
-              <li>Avoids refactoring of legacy code (AIX, IBM i)</li>
-              <li>Can be integrated with the rest of IBM Cloud (Kubernetes, Watsonx, etc.)</li>
-              <li>Hourly or monthly pricing with scalability</li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <!-- ... seu conteúdo principal ... -->
 
     <script>
-      !function(window){
-        const host="https://labs.heygen.com",
-              url=host+"/guest/streaming-embed?share=eyJxdWFsaXR5IjoiaGlnaCIsImF2YXRhck5hbWUiOiJQZWRyb19Qcm9mZXNzaW9uYWxMb29rX3B1%0D%0AYmxpYyIsInByZXZpZXdJbWciOiJodHRwczovL2ZpbGVzMi5oZXlnZW4uYWkvYXZhdGFyL3YzLzQ1%0D%0AZjdkZTRkYTMyMjQ4ZWY5NTJhOGRiMzI1YWVlMjU4XzU1OTEwL3ByZXZpZXdfdGFyZ2V0LndlYnAi%0D%0ALCJuZWVkUmVtb3ZlQmFja2dyb3VuZCI6dHJ1ZSwia25vd2xlZGdlQmFzZUlkIjoiZGVmMTkzZTcz%0D%0AYzZmNGYzYzlkMjdmMmNlOTY0ZTVhZDciLCJ1c2VybmFtZSI6Ijg4OWFlZDhiN2IxMzQ3ODNiOWE3%0D%0AOWU5ZmZhMDY3NTM4In0%3D&inIFrame=1",
-              clientWidth=document.body.clientWidth,
-              wrapDiv=document.createElement("div");
-        wrapDiv.id="heygen-streaming-embed";
-        const container=document.createElement("div");
-        container.id="heygen-streaming-container";
-        const stylesheet=document.createElement("style");
-        stylesheet.innerHTML=`
-          #heygen-streaming-embed {
-            z-index: 9999;
-            position: fixed;
-            right: 40px;
-            bottom: 40px;
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            border: 2px solid #fff;
-            box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.12);
-            transition: all linear 0.1s;
-            overflow: hidden;
-
-            opacity: 0;
-            visibility: hidden;
-          }
-          #heygen-streaming-embed.show {
-            opacity: 1;
-            visibility: visible;
-          }
-          #heygen-streaming-embed.expand {
-            ${clientWidth<540?"height: 266px; width: 96%; left: 50%; transform: translateX(-50%);":"height: 366px; width: calc(366px * 16 / 9);"}
-            border: 0;
-            border-radius: 8px;
-          }
-          #heygen-streaming-container {
-            width: 100%;
-            height: 100%;
-          }
-          #heygen-streaming-container iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-          }
-        `;
-        const iframe=document.createElement("iframe");
-        iframe.allowFullscreen=!1,
-        iframe.title="Streaming Embed",
-        iframe.role="dialog",
-        iframe.allow="microphone",
-        iframe.src=url;
-        let visible=!1,initial=!1;
-        window.addEventListener("message",(e=>{
-          e.origin===host&&e.data&&e.data.type&&"streaming-embed"===e.data.type&&(
-            "init"===e.data.action?(initial=!0,wrapDiv.classList.toggle("show",initial)):
-            "show"===e.data.action?(visible=!0,wrapDiv.classList.toggle("expand",visible)):
-            "hide"===e.data.action&&(visible=!1,wrapDiv.classList.toggle("expand",visible))
-          )
-        })),
-        container.appendChild(iframe),
-        wrapDiv.appendChild(stylesheet),
-        wrapDiv.appendChild(container),
-        document.body.appendChild(wrapDiv)
-      }(globalThis);
+        document.addEventListener('DOMContentLoaded', function() {
+            // Responsive handling for different screen sizes and orientations
+            function adjustLayout() {
+                const container = document.querySelector('.avatar-container');
+                const windowWidth = window.innerWidth;
+                
+                if (windowWidth < 768) {
+                    // Mobile adjustments
+                    container.style.width = '95%';
+                } else {
+                    // Desktop adjustments
+                    container.style.width = '500px';
+                }
+            }
+            
+            // Initial call and event listener for resize
+            adjustLayout();
+            window.addEventListener('resize', adjustLayout);
+            
+            // Add subtle animation to digital elements
+            const digitalElements = document.querySelectorAll('.digital-line, .digital-dot');
+            digitalElements.forEach(element => {
+                const randomDelay = Math.random() * 5;
+                element.style.animationDelay = `${randomDelay}s`;
+            });
+        });
     </script>
-  </body>
+</body>
 </html>
-
- 
-
